@@ -1,6 +1,17 @@
 /* Global colours, fonts, body, buttons, header, footer, reusable styles */
 
+/* =========================
+GLOBAL COLORS
+========================= */
 
+:root {
+  --color-header-bg: #f6f2e8;
+  --color-page-bg: #f9f8f5;
+  --color-text-dark: #3c3c3c;
+  --color-primary: #314a2e;
+  --color-line: #c8b39c;
+  --color-surface: #ffffff;
+}
 /* =========================
 GLOBAL FONTS & TYPOGRAPHY
 ========================= */
@@ -42,11 +53,10 @@ GLOBAL FONTS & TYPOGRAPHY
 
 .text-ui {
   font-family: "Inter", sans-serif;
-  font-size: clamp(10px, 2.56vw, 19px);
-  font-weight: 400;
+  font-size: clamp(12px, 2.56vw, 21px);
+  font-weight: 600;
   line-height: normal;
 }
-
 
 /* HEADER/TOP NAVIGATION !*/
 /*-----------------*/

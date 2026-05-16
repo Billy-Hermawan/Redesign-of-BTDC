@@ -14,13 +14,31 @@
   width: 100%;
   aspect-ratio: 390 / 173;
   max-height: 639.656px;
+  position: relative;
+  overflow: hidden;
+}
 
-  background-image: url("../assets/images/top-dog-1.png");
+.hero-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/images/top-dog-1.png");
 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position: relative;
+
+  opacity: 1;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+}
+
+.hero-bg.is-fading {
+  opacity: 0;
 }
 
 .hero-text {
@@ -28,26 +46,52 @@
   left: clamp(44px, 9.5vw, 120px);
   top: 50%;
   transform: translateY(-50%);
-  color: #fff;
+  color: var(--color-surface);
   text-align: center;
+  z-index: 2;
 }
 
 .hero-text h1 {
   margin: 0;
-  color: #fff;
+  color: var(--color-surface);
 }
 
 .hero-text p {
   margin: clamp(15px, calc(0px + 3.85vw), 55.5px) 0 0;
-  color: #fff;
+  color: var(--color-surface);
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(14px, 3vw, 42px);
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: clamp(8px, 1.2vw, 18px);
+  z-index: 3;
+}
+
+.hero-dot {
+  width: clamp(10px, 2.2vw, 24px);
+  height: clamp(10px, 2.2vw, 24px);
+  border-radius: 50%;
+  border: clamp(1px, 0.25vw, 3px) solid rgba(0, 0, 0, 0.75);
+  padding: 0;
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+
+.hero-dot.active {
+  background-color: var(--color-primary);
 }
 
 .about-section {
   margin-top: clamp(20px, 5.13vw, 74px);
   min-height: clamp(187px, 40vw, 600px);
-  border-top: clamp(1px, 0.28vw, 4px) solid #c8b39c;
-  border-bottom: clamp(1px, 0.28vw, 4px) solid #c8b39c;
-  background-color: #fff;
+  border-top: clamp(1px, 0.28vw, 4px) solid var(--color-line);
+  border-bottom: clamp(1px, 0.28vw, 4px) solid var(--color-line);
+  background-color: var(--color-surface);
 
   padding-top: clamp(20px, 5.13vw, 74px);
   padding-bottom: clamp(20px, 5.13vw, 74px);
@@ -79,20 +123,20 @@
 
 .about-text h2 {
   margin: 0;
-  color: #314a2e;
+  color: var(--color-primary);
   text-align: left;
 }
 
 .about-title-line {
   width: clamp(49px, 12.55vw, 181px);
   height: clamp(1px, 0.28vw, 4px);
-  background-color: #c8b39c;
+  background-color: var(--color-line);
   margin-top: clamp(10px, 2.22vw, 32px);
   margin-bottom: clamp(14px, 2.29vw, 33px);
 }
 
 .about-text p {
-  color: #3c3c3c;
+  color: var(--color-text-dark);
 }
 
 /* =========================
@@ -101,14 +145,14 @@
 
 .courses-section {
   min-height: clamp(1205px, 119.65vw, 1725px);
-  background-color: #fff;
+  background-color: var(--color-surface);
 
   padding-top: clamp(20px, 5.13vw, 74px);
   padding-bottom: clamp(20px, 5.13vw, 74px);
   padding-left: clamp(0px, 3.05vw, 44px);
   padding-right: clamp(0px, 3.05vw, 44px);
 
-  border-bottom: clamp(1px, 0.28vw, 4px) solid #c8b39c;
+  border-bottom: clamp(1px, 0.28vw, 4px) solid var(--color-line);
 }
 
 .courses-header {
@@ -118,14 +162,14 @@
 
 .courses-header h2 {
   margin: 0;
-  color: #314a2e;
+  color: var(--color-primary);
   text-align: center;
 }
 
 .courses-title-line {
   width: clamp(49px, 12.55vw, 181px);
   height: clamp(1px, 0.28vw, 4px);
-  background-color: #c8b39c;
+  background-color: var(--color-line);
   margin: clamp(8px, 1.5vw, 22px) auto 0;
 }
 
@@ -165,8 +209,8 @@
   margin-top: calc(-1 * clamp(24px, 6.15vw, 45px));
   padding: clamp(10px, 2.56vw, 26px) clamp(12px, 3.08vw, 29px);
 
-  background-color: #fff;
-  border: clamp(1px, 0.26vw, 2px) solid #3c3c3c;
+  background-color: var(--color-surface);
+  border: clamp(1px, 0.26vw, 2px) solid var(--color-text-dark);
   border-radius: clamp(20px, 5.13vw, 40px);
 
   text-align: center;
@@ -180,13 +224,13 @@
 
 .course-info h3 {
   margin: 0 0 clamp(8px, 2.05vw, 16px);
-  color: #314a2e;
+  color: var(--color-primary);
   text-align: center;
 }
 
 .course-info p {
   margin: 0 0 clamp(10px, 2.56vw, 19px);
-  color: #3c3c3c;
+  color: var(--color-text-dark);
   text-align: center;
 }
 
@@ -200,8 +244,8 @@
   justify-content: center;
 
   border-radius: clamp(20px, 5.13vw, 40px);
-  background-color: #314a2e;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
   text-decoration: none;
 }
 @media (min-width: 1200px) {
@@ -242,7 +286,7 @@
     width: 529px;
     height: 246px;
     border-radius: 40px;
-    border: 2px solid #3c3c3c;
+    border: 2px solid var(--color-text-dark);
   }
 
   .course-info {
@@ -250,7 +294,7 @@
     min-height: auto;
     padding: 26px 29px;
     border-radius: 40px;
-    border: 2px solid #3c3c3c;
+    border: 2px solid var(--color-text-dark);
 
     position: absolute;
     left: 50%;
@@ -277,3 +321,106 @@
     justify-self: center;
   }
 }
+
+/* =========================
+   TESTIMONIALS SECTION
+========================= */
+
+.testimonials-section {
+  min-height: clamp(275px, 59.43vw, 857px);
+  background-color: var(--color-surface);
+
+  padding-top: clamp(20px, 5.13vw, 74px);
+  padding-bottom: clamp(20px, 5.13vw, 74px);
+  padding-left: clamp(0px, 3.05vw, 44px);
+  padding-right: clamp(0px, 3.05vw, 44px);
+
+  border-bottom: clamp(1px, 0.28vw, 4px) solid var(--color-line);
+}
+
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 5.5vw, 79px);
+}
+
+.testimonials-header h2 {
+  margin: 0;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.testimonials-title-line {
+  width: clamp(49px, 12.55vw, 181px);
+  height: clamp(1px, 0.28vw, 4px);
+  background-color: var(--color-line);
+  margin: clamp(8px, 1.5vw, 22px) auto 0;
+}
+
+.testimonials-grid {
+
+}
+
+.testimonial-card {
+
+}
+
+.testimonial-quote {
+
+}
+
+.testimonial-review {
+
+}
+
+.testimonial-person {
+
+}
+
+.testimonial-image {
+
+}
+
+.testimonial-details {
+
+}
+
+.testimonial-details h3 {
+
+}
+
+.testimonial-stars {
+
+}
+
+@media (min-width: 1200px) {
+
+  }
+
+  .testimonials-header {
+
+  }
+
+  .testimonials-title-line {
+
+  }
+
+  .testimonials-grid {
+
+  }
+
+  .testimonial-card {
+
+  }
+
+  .testimonial-quote {
+
+  }
+
+  .testimonial-review {
+
+  }
+
+  .testimonial-image {
+
+  }
