@@ -1,7 +1,8 @@
+
 /* Global colours, fonts, body, buttons, header, footer, reusable styles */
 
 /* =========================
-GLOBAL COLORS
+   GLOBAL COLORS
 ========================= */
 
 :root {
@@ -12,54 +13,84 @@ GLOBAL COLORS
   --color-line: #c8b39c;
   --color-surface: #ffffff;
 }
+
 /* =========================
-GLOBAL FONTS & TYPOGRAPHY
+   GLOBAL FONTS & TYPOGRAPHY
+   Mobile base: 390px
+   Desktop override: 1440px
 ========================= */
 
 .text-heading {
   font-family: "Playfair Display", serif;
-  font-size: clamp(25px, 6.38vw, 92px);
+  font-size: 25px;
   font-weight: 400;
   line-height: 1.1;
 }
 
 .text-subheading {
   font-family: "Playfair Display", serif;
-  font-size: clamp(20px, 5.13vw, 39px);
+  font-size: 20px;
   font-weight: 400;
   line-height: 0.95;
 }
 
 .text-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: clamp(12px, 3.08vw, 44px);
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.3;
 }
 
 .text-body {
   font-family: "Inter", sans-serif;
-  font-size: clamp(8px, 2vw, 30px);
+  font-size: 12px; /* was 8px */
   font-weight: 400;
   line-height: normal;
 }
 
 .text-body2 {
   font-family: "Inter", sans-serif;
-  font-size: clamp(18px, 2vw, 20px);
+  font-size: 10px;
   font-weight: 400;
   line-height: normal;
 }
 
 .text-ui {
   font-family: "Inter", sans-serif;
-  font-size: clamp(12px, 2.56vw, 21px);
+  font-size: 12px;
   font-weight: 600;
   line-height: normal;
 }
 
-/* HEADER/TOP NAVIGATION !*/
-/*-----------------*/
+@media (min-width: 1440px) {
+  .text-heading {
+    font-size: 92px;
+  }
+
+  .text-subheading {
+    font-size: 39px;
+  }
+
+  .text-subtitle {
+    font-size: 44px;
+  }
+
+  .text-body {
+    font-size: 30px;
+  }
+
+  .text-body2 {
+    font-size: 20px;
+  }
+
+  .text-ui {
+    font-size: 21px;
+  }
+}
+
+/* =========================
+   HEADER / TOP NAVIGATION
+========================= */
 
 html,
 body {
@@ -67,13 +98,13 @@ body {
   padding: 0;
 }
 
-/*background colour*/
+/* background colour */
 .topnav {
   background-color: #333;
   overflow: hidden;
 }
 
-/*text*/
+/* text */
 .topnav a {
   float: right;
   color: #f2f2f2;
@@ -83,7 +114,7 @@ body {
   font-size: 17px;
 }
 
-/*color on hover*/
+/* colour on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;

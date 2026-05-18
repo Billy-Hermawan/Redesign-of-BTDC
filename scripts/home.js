@@ -17,10 +17,6 @@ function showSlide(index) {
 
   setTimeout(() => {
     heroBg.style.backgroundImage = `
-      linear-gradient(
-        rgba(0, 0, 0, 0.25),
-        rgba(0, 0, 0, 0.25)
-      ),
       url("${heroImages[currentSlide]}")
     `;
 
