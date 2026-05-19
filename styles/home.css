@@ -91,7 +91,7 @@
   min-height: 187px;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
-  background-color: var(--color-surface);
+  background-color: var(--color-page-bg);
   padding: 20px 12px;
 }
 
@@ -144,7 +144,7 @@
 
 .courses-section {
   min-height: 1205px;
-  background-color: var(--color-surface);
+  background-color: var(--color-page-bg);
   padding: 20px 0;
   border-bottom: 1px solid var(--color-line);
 }
@@ -238,7 +238,7 @@
 ========================= */
 
 .testimonials-section {
-  background-color: var(--color-surface);
+  background-color: var(--color-page-bg);
   padding: 20px 0 30px;
   border-bottom: 1px solid var(--color-line);
 }
@@ -532,43 +532,41 @@
   /* --- Testimonials --- */
 
   .testimonials-grid {
-  display: grid; /* add this */
-  grid-template-columns: repeat(3, 369px);
-  column-gap: 48px;
-  row-gap: 48px;
-  justify-content: center;
+    display: none;
   }
 
   .testimonials-carousel {
-    display: none;
+    display: flex;
   }
 
   .testimonials-dots {
-    display: none;
+    display: flex;
   }
 
-  .testimonials-section {
-    min-height: 857px;
-    padding: 74px 44px;
-    border-bottom-width: 4px;
+  .testimonials-track-wrapper {
+    width: calc(3 * 369px + 2 * 48px);
   }
 
-  .testimonials-header {
-    margin-bottom: 79px;
+  .testimonial-arrow img {
+    width: 48px;
+    height: 48px;
   }
 
-  .testimonials-title-line {
-    width: 181px;
-    height: 4px;
-    margin-top: 22px;
+  .testimonial-dot {
+    width: 16px;
+    height: 16px;
   }
 
   .testimonial-card {
-    width: 369px;
+    min-width: 369px;
     min-height: 333px;
     border-radius: 36px;
     border-width: 2px;
     padding: 24px 28px;
+  }
+
+  .testimonials-dots {
+    margin-top: 24px;
   }
 
   .testimonial-quote {
@@ -594,5 +592,24 @@
   .testimonial-stars {
     font-size: 21px;
     letter-spacing: 4px;
+  }
+
+  .testimonials-section {
+    min-height: 857px;
+    padding: 74px 44px;
+    border-bottom-width: 4px;
+  }
+
+  .testimonials-header {
+    margin-bottom: 79px;
+  }
+
+  .testimonials-title-line {
+    width: 181px;
+    height: 4px;
+    margin-top: 22px;
+  }
+  .testimonials-track {
+  gap: 48px;
   }
 }
