@@ -17,11 +17,38 @@
 </head>
 
 <body>
-    <div class="topnav">
-        <a href="#courses">Courses</a>
-        <a href="#contact">Contact</a>
-        <a href="#home">Home</a>
+<header class="header">
+    <a href="#home" class="header-logo-link">
+        <img src="assets/icons/logo.png" alt="Brisbane Dog Training Club" class="header-logo">
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="header-nav">
+        <a href="#home" class="header-link">Home</a>
+        <a href="#courses" class="header-link">Courses</a>
+        <a href="#contact" class="header-link">Contact</a>
+    </nav>
+
+    <!-- Right side icons -->
+    <div class="header-right">
+        <a href="pages/checkout.html" class="header-cart">
+            <img src="assets/icons/cart.png" alt="Cart" class="header-icon">
+        </a>
+        <!-- Hamburger (mobile only) -->
+        <button class="header-hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
+
+    <!-- Mobile menu -->
+    <div class="header-mobile-menu">
+        <a href="#home" class="header-mobile-link">Home</a>
+        <a href="#courses" class="header-mobile-link">Courses</a>
+        <a href="#contact" class="header-mobile-link">Contact</a>
+    </div>
+</header>
 
     <section id="home" class="hero">
         <div class="hero-bg"></div>
@@ -382,7 +409,7 @@
 
         </div>
     </section>
-<footer class="footer">
+<footer class="footer" id="contact">
     <img src="assets/icons/white-logo.png" alt="Brisbane Dog Training Club" class="footer-logo">
 
     <div class="footer-blocks">

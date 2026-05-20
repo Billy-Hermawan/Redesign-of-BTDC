@@ -1,3 +1,28 @@
+// --- Hamburger Menu + Smooth Scroll ---
+const hamburger = document.querySelector('.header-hamburger');
+const mobileMenu = document.querySelector('.header-mobile-menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  });
+});
+
 // --- Hero Carousel ---
 const heroBg = document.querySelector(".hero-bg");
 const heroDots = document.querySelectorAll(".hero-dot");
