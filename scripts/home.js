@@ -107,8 +107,16 @@ window.addEventListener('resize', () => {
 updateDots();
 startAuto();
 
-/*
-Things to make:
+// --- FAQ Accordion ---
+const faqItems = document.querySelectorAll('.faq-item');
 
-- FAQ accordion
-*/
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    // close all
+    faqItems.forEach(i => i.classList.remove('open'));
+    // open clicked one if it was closed
+    if (!isOpen) item.classList.add('open');
+  });
+});

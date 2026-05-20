@@ -393,6 +393,94 @@
 }
 
 /* =========================
+   FAQ SECTION — Mobile 390px
+========================= */
+
+.faq-section {
+  background-color: var(--color-page-bg);
+  padding: 20px 24px 30px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.faq-header h2 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.faq-title-line {
+  width: 49px;
+  height: 1px;
+  background-color: var(--color-line);
+  margin: 8px auto 0;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-text-dark);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 12px;
+}
+
+.faq-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 16px;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 0 16px 16px;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: var(--color-text-dark);
+}
+
+/* =========================
    DESKTOP OVERRIDES — 1440px
 ========================= */
 
