@@ -30,12 +30,19 @@
   z-index: 100;
 }
 
+.header-logo-link {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
 .header-logo {
   height: 200px;
   width: auto;
   object-fit: contain;
   margin-left: -12px;
   margin-bottom: -10px;
+  pointer-events: none;
 }
 
 /* hide desktop nav on mobile */
@@ -621,13 +628,14 @@
 @media (min-width: 1440px) {
   /* --- Header --- */
     .header {
-    padding: 16px 60px;
+    padding: 40px 60px;
   }
 
   .header-nav {
     display: flex;
     align-items: center;
     gap: 40px;
+    margin-left: 300px;
   }
 
   .header-hamburger {
@@ -635,13 +643,19 @@
   }
 
   .header-logo {
-    height: 60px;
+    height: 350px;
+    margin-left: -30px;
   }
-
+  
   .header-icon {
-    width: 28px;
-    height: 28px;
+    width: 70px;
+    height: 70px;
   }
+  .header-link {
+  font-family: "Playfair Display", serif;
+  font-size: 39px;
+  color: var(--color-primary);
+}
   /* --- Hero --- */
   .hero-text {
     left: 120px;
