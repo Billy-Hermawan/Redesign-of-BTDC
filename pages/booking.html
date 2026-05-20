@@ -1,33 +1,115 @@
-<!--
-Contains:
+<!DOCTYPE html>
+<html lang="en">
 
-Header / navbar
-Back to selected course link
-Club Rules section
-Location card
-Calendar section
-Available time slots
-Add to Cart button
-Footer
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/course-detail.css">
+    <link rel="stylesheet" href="../styles/booking.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
 
-Links/buttons:
+<body>
 
-Back to selected course → course-detail.html?course=course-id
-Home nav → ../index.html
-Courses nav → ../index.html#courses
-Contact nav → ../index.html#contact
-Cart icon → checkout.html
-Google Maps link → external Google Maps page
-Date buttons → select date
-Time buttons → select time
-Add to Cart → saves booking and goes to checkout.html
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="header-logo-link">
+            <img src="../assets/icons/logo.png" alt="Brisbane Dog Training Club" class="header-logo">
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html#home" class="header-link">Home</a>
+            <a href="../index.html#courses" class="header-link">Courses</a>
+            <a href="../index.html#contact" class="header-link">Contact</a>
+        </nav>
+        <div class="header-right">
+            <a href="checkout.html" class="header-cart">
+                <img src="../assets/icons/cart.png" alt="Cart" class="header-icon">
+            </a>
+            <button class="header-hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="header-mobile-menu">
+            <a href="../index.html#home" class="header-mobile-link">Home</a>
+            <a href="../index.html#courses" class="header-mobile-link">Courses</a>
+            <a href="../index.html#contact" class="header-mobile-link">Contact</a>
+        </div>
+    </header>
 
-JavaScript notes:
+    <!-- Club Rules -->
+    <section class="club-rules-section">
+        <a href="course-detail.html" class="course-back" id="booking-back">← Back To Puppy Preschool</a>
 
-Reads course from URL
-Shows different available dates/times depending on course
-Highlights selected date
-Highlights selected time
-Saves course, price, date, time, image, and booking code to localStorage
-Updates cart count
--->
+        <div class="club-rules-header">
+            <h2 class="text-heading">Club Rules</h2>
+            <div class="club-rules-line"></div>
+        </div>
+
+        <ul class="rules-list">
+            <li class="rule-item">
+                <img src="../assets/icons/check.png" alt="" class="rule-check">
+                <p class="rule-text">No harsh treatment (e.g. hitting, shouting, force) is allowed. Train with patience or you may be asked to leave</p>
+            </li>
+            <li class="rule-item">
+                <img src="../assets/icons/check.png" alt="" class="rule-check">
+                <p class="rule-text">Clean up after your dog and use the bins provided.</p>
+            </li>
+            <li class="rule-item">
+                <img src="../assets/icons/check.png" alt="" class="rule-check">
+                <p class="rule-text">Don't approach other dogs without the owner's permission.</p>
+            </li>
+            <li class="rule-item">
+                <img src="../assets/icons/check.png" alt="" class="rule-check">
+                <p class="rule-text">Keep dogs on lead unless instructed otherwise.</p>
+            </li>
+            <li class="rule-item">
+                <img src="../assets/icons/check.png" alt="" class="rule-check">
+                <p class="rule-text">Always close the gate behind you</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <img src="../assets/icons/white-logo.png" alt="Brisbane Dog Training Club" class="footer-logo">
+        <div class="footer-blocks">
+            <div class="footer-block">
+                <h3 class="footer-heading">Hours</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/time.png" alt="Hours" class="footer-icon">
+                    <p class="footer-text">Monday to Sunday<br>8AM - 8PM</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Contact</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/gmail.png" alt="Email" class="footer-icon">
+                    <p class="footer-text">brisbanedogtrainingclub.com</p>
+                </div>
+                <div class="footer-row">
+                    <img src="../assets/icons/phone.png" alt="Phone" class="footer-icon">
+                    <p class="footer-text">+61 413223190</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Social</h3>
+                <a href="https://www.facebook.com/bdtc1" target="_blank">
+                    <img src="../assets/icons/facebook.png" alt="Facebook" class="footer-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/booking.js"></script>
+</body>
+
+</html>

@@ -227,7 +227,7 @@
 .learn-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 6px;
 }
 
 .learn-check {
@@ -352,7 +352,7 @@
   }
 
   .requirements-header {
-    margin-bottom: 48px;
+    margin-bottom: 70px;
   }
 
   .requirements-title-line {
@@ -408,6 +408,9 @@
     padding: 60px 80px;
   }
 
+  .learn-header {
+    margin-bottom: 70px;
+  }
   .learn-title-line {
     width: 181px;
     height: 4px;
