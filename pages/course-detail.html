@@ -1,31 +1,104 @@
-<!--
- Contains:
+<!DOCTYPE html>
+<html lang="en">
 
-Header / navbar
-Back to Home link
-Course title
-Course description
-Course image
-Rating/reviews
-Price
-Requirements section
-Learn section
-Choose Date & Time button
-Footer
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Detail</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/course-detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,opsz,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
 
-Links/buttons:
+<body>
 
-Back to Home → ../index.html
-Home nav → ../index.html
-Courses nav → ../index.html#courses
-Contact nav → ../index.html#contact
-Cart icon → checkout.html
-Choose Date & Time → booking.html?course=course-id
+    <!-- Header (same as home) -->
+    <header class="header">
+        <a href="../index.html" class="header-logo-link">
+            <img src="../assets/icons/logo.png" alt="Brisbane Dog Training Club" class="header-logo">
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html#home" class="header-link text-subheading">Home</a>
+            <a href="../index.html#courses" class="header-link text-subheading">Courses</a>
+            <a href="../index.html#contact" class="header-link text-subheading">Contact</a>
+        </nav>
+        <div class="header-right">
+            <a href="checkout.html" class="header-cart">
+                <img src="../assets/icons/cart.png" alt="Cart" class="header-icon">
+            </a>
+            <button class="header-hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="header-mobile-menu">
+            <a href="../index.html#home" class="header-mobile-link">Home</a>
+            <a href="../index.html#courses" class="header-mobile-link">Courses</a>
+            <a href="../index.html#contact" class="header-mobile-link">Contact</a>
+        </div>
+    </header>
 
-JavaScript notes:
+    <!-- Course Hero -->
+    <section class="course-hero">
+        <a href="../index.html" class="course-back">← Back To Home</a>
+        <img src="../assets/images/training-1.png" alt="Puppy Preschool" class="course-hero-image" id="course-image">
 
-Reads course from URL
-Example: course-detail.html?course=puppy-preschool
-Changes course title, image, description, price, requirements, and learn points
-Sets the Choose Date & Time link to the correct course
- -->
+        <div class="course-hero-text">
+            <h1 class="text-heading course-title" id="course-title">Puppy Preschool</h1>
+            <div class="course-title-line"></div>
+            <p class="text-body" id="course-desc-1">Our Puppy Preschool is designed to help your pup build confidence and
+                good habits from the start. With small, rolling classes, they'll get to socialise with different puppies and
+                people each week.</p>
+            <p class="text-body" id="course-desc-2">We focus on basic manners and essential life skills like sit, recall,
+                loose leash walking, and calm behaviour around others, all taught through simple, reward-based training.</p>
+            <div class="course-rating">
+                <img src="../assets/icons/stars.png" alt="stars" class="course-stars">
+                <span class="text-body" id="course-rating">4.8 (823 reviews)</span>
+            </div>
+            <div class="course-price">
+                <img src="../assets/icons/dollar.png" alt="price" class="course-dollar">
+                <span class="text-heading" id="course-price">100</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as home) -->
+    <footer class="footer" id="contact">
+        <img src="../assets/icons/white-logo.png" alt="Brisbane Dog Training Club" class="footer-logo">
+        <div class="footer-blocks">
+            <div class="footer-block">
+                <h3 class="footer-heading">Hours</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/time.png" alt="Hours" class="footer-icon">
+                    <p class="footer-text">Monday to Sunday<br>8AM - 8PM</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Contact</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/gmail.png" alt="Email" class="footer-icon">
+                    <p class="footer-text">brisbanedogtrainingclub.com</p>
+                </div>
+                <div class="footer-row">
+                    <img src="../assets/icons/phone.png" alt="Phone" class="footer-icon">
+                    <p class="footer-text">+61 413223190</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Social</h3>
+                <a href="https://www.facebook.com/bdtc1" target="_blank">
+                    <img src="../assets/icons/facebook.png" alt="Facebook" class="footer-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+</body>
+
+</html>
