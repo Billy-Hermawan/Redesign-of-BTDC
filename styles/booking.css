@@ -1,6 +1,96 @@
 /* Club rules, location card, calendar, time slots, add-to-cart area */
 
 /* =========================
+   LOCATION CARD — Mobile 390px
+========================= */
+
+.location-section {
+  background-color: var(--color-page-bg);
+  padding: 30px 24px;
+  border-bottom: 1px solid var(--color-line);
+  display: flex;
+  justify-content: center;
+}
+
+.location-card {
+  width: 275px;
+  height: 167px;
+  border-radius: 20px;
+  border: 1px solid var(--color-text-dark);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.location-text-area {
+  width: 100%;
+  padding: 12px 130px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.location-title {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.location-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.location-pin {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+  margin-top: 1px;
+}
+
+.location-addr-text {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-dark);
+  line-height: 1.4;
+}
+
+.location-maps-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.location-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 165px;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
    CLUB RULES — Mobile 390px
 ========================= */
 
