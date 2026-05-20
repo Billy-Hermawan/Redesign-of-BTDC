@@ -264,12 +264,6 @@ body {
     width: 70px;
     height: 70px;
   }
-  .header-link {
-  font-family: "Playfair Display", serif;
-  font-size: 39px;
-  color: var(--color-primary);
-}
-
   /* --- Footer --- */
   .footer {
     padding: 60px 80px;
@@ -311,6 +305,7 @@ body {
     font-size: 18px;
   }
 }
+
 /* =========================
    Transitions, animations, hover effects
 ========================= */
@@ -379,6 +374,14 @@ body {
 
 .header-link:hover::after {
   width: 100%;
+}
+
+@media (min-width: 1440px) {
+  .header-link {
+    font-family: "Playfair Display", serif;
+    font-size: 39px;
+    color: var(--color-primary);
+  }
 }
 
 /* Mobile link hover */
