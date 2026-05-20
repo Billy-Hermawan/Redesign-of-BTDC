@@ -125,7 +125,7 @@
   background-color: var(--color-line);
   margin-top: 10px;
   margin-bottom: 14px;
-  margin-left: auto;  /* centre the line */
+  margin-left: auto; /* centre the line */
   margin-right: auto;
 }
 
@@ -466,7 +466,9 @@
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
+  transition:
+    max-height 0.4s ease,
+    padding 0.3s ease;
   padding: 0 16px;
 }
 
@@ -539,7 +541,6 @@
 ========================= */
 
 @media (min-width: 1440px) {
-
   /* --- Hero --- */
   .hero-text {
     left: 120px;
@@ -571,15 +572,15 @@
     gap: 100px; /* more space between image and text */
   }
 
-.about-text h2 {
+  .about-text h2 {
     text-align: left;
   }
 
-.about-text p {
+  .about-text p {
     text-align: left;
   }
 
-.about-title-line {
+  .about-title-line {
     margin-left: 0;
     margin-right: 0;
   }
@@ -752,49 +753,90 @@
     margin-top: 22px;
   }
   .testimonials-track {
-  gap: 48px;
+    gap: 48px;
   }
 
   /* --- FAQ --- */
-.faq-section {
-  padding: 74px 44px;
-  border-bottom-width: 4px;
-}
+  .faq-section {
+    padding: 74px 44px;
+    border-bottom-width: 4px;
+  }
 
-.faq-header {
-  margin-bottom: 56px;
-}
+  .faq-header {
+    margin-bottom: 56px;
+  }
 
-.faq-title-line {
-  width: 181px;
-  height: 4px;
-  margin-top: 22px;
-}
+  .faq-title-line {
+    width: 181px;
+    height: 4px;
+    margin-top: 22px;
+  }
 
-.faq-list {
-  max-width: 1100px;
-  gap: 16px;
-}
+  .faq-list {
+    max-width: 1100px;
+    gap: 16px;
+  }
 
-.faq-question {
-  font-size: 20px;
-  padding: 24px;
-}
+  .faq-question {
+    font-size: 20px;
+    padding: 24px;
+  }
 
-.faq-icon {
-  width: 28px;
-  height: 28px;
-}
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+  }
 
-.faq-answer {
-  padding: 0 24px;
-}
+  .faq-answer {
+    padding: 0 24px;
+  }
 
-.faq-item.open .faq-answer {
-  padding: 0 24px 24px;
-}
+  .faq-item.open .faq-answer {
+    padding: 0 24px 24px;
+  }
 
-.faq-answer p {
-  font-size: 18px;
-}
+  .faq-answer p {
+    font-size: 18px;
+  }
+
+  /* --- Footer --- */
+  .footer {
+    padding: 60px 80px;
+    gap: 40px;
+  }
+
+  .footer-logo {
+    width: 600px;
+  }
+
+  .footer-blocks {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+
+  .footer-block {
+    flex: 1;
+    padding: 0 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .footer-block:first-child {
+    padding-left: 0;
+  }
+
+  .footer-block:last-child {
+    border-right: none;
+  }
+
+  .footer-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .footer-text {
+    font-size: 18px;
+  }
 }
