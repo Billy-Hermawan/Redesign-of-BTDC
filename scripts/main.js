@@ -64,73 +64,57 @@ function resetCarouselTimer() {
   startCarousel();
 }
 
-heroDots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    showSlide(index);
-    resetCarouselTimer();
+if (heroBg) {
+  heroDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showSlide(index);
+      resetCarouselTimer();
+    });
   });
-});
 
-startCarousel();
-// --- Testimonials Carousel ---
-const track = document.querySelector('.testimonials-track');
-const testimonialsDots = document.querySelectorAll('.testimonial-dot');
-const prevBtn = document.querySelector('.testimonial-arrow-left');
-const nextBtn = document.querySelector('.testimonial-arrow-right');
-const allCards = document.querySelectorAll('.testimonials-track .testimonial-card');
-const total = allCards.length;
-
-let current = 0;
-let autoTimer;
-const DELAY = 4000;
-
-function getCardsPerView() {
-  return window.innerWidth >= 1440 ? 3 : 1;
+  startCarousel();
 }
 
-function getCardWidth() {
-  return window.innerWidth >= 1440 ? 369 + 48 : 260;
-}
+function initCarousel(trackSelector, dotSelector, prevSelector, nextSelector, cardWidth, delay) {
+  const track = document.querySelector(trackSelector);
+  if (!track) return;
 
-function getTotalSteps() {
-  return Math.ceil(total / getCardsPerView());
-}
+  const dots = document.querySelectorAll(dotSelector);
+  const prevBtn = document.querySelector(prevSelector);
+  const nextBtn = document.querySelector(nextSelector);
+  const total = track.querySelectorAll('.testimonial-card, .req-card').length;
+  let current = 0;
+  let autoTimer;
 
-function goTo(index) {
-  const steps = getTotalSteps();
-  current = (index + steps) % steps;
-  track.style.transform = `translateX(-${current * getCardsPerView() * getCardWidth()}px)`;
-  testimonialsDots.forEach(d => d.classList.remove('active'));
-  testimonialsDots[current].classList.add('active');
-}
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
+    dots.forEach(d => d.classList.remove('active'));
+    if (dots[current]) dots[current].classList.add('active');
+  }
 
-function updateDots() {
-  const steps = getTotalSteps();
-  testimonialsDots.forEach((dot, i) => {
-    dot.style.display = i < steps ? 'block' : 'none';
-  });
-}
+  function startAuto() {
+    autoTimer = setInterval(() => goTo(current + 1), delay);
+  }
 
-function startAuto() {
-  autoTimer = setInterval(() => goTo(current + 1), DELAY);
-}
+  function resetAuto() {
+    clearInterval(autoTimer);
+    startAuto();
+  }
 
-function resetAuto() {
-  clearInterval(autoTimer);
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+
+  goTo(0);
   startAuto();
 }
 
-nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-testimonialsDots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+// init testimonials
+initCarousel('.testimonials-track', '.testimonial-dot', '.testimonial-arrow-left', '.testimonial-arrow-right', 260, 4000);
 
-window.addEventListener('resize', () => {
-  updateDots();
-  goTo(0);
-});
-
-updateDots();
-startAuto();
+// init requirements
+initCarousel('.requirements-track', '.req-dot', '.req-arrow-left', '.req-arrow-right', 260, 5000);
 
 // --- FAQ Accordion ---
 const faqItems = document.querySelectorAll('.faq-item');
