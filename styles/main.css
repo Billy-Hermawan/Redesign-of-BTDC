@@ -296,6 +296,12 @@ body {
     border-right: none;
   }
 
+  .header-link {
+    font-family: "Playfair Display", serif;
+    font-size: 39px;
+    color: var(--color-primary);
+  }
+
   .footer-icon {
     width: 55px;
     height: 55px;
@@ -348,11 +354,6 @@ body {
 
 /* Nav link hover */
 .header-link {
-  color: var(--color-text-dark);
-  text-decoration: none;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
   position: relative;
   transition: color 0.2s ease;
 }
@@ -374,14 +375,6 @@ body {
 
 .header-link:hover::after {
   width: 100%;
-}
-
-@media (min-width: 1440px) {
-  .header-link {
-    font-family: "Playfair Display", serif;
-    font-size: 39px;
-    color: var(--color-primary);
-  }
 }
 
 /* Mobile link hover */

@@ -260,11 +260,12 @@
   justify-content: center;
   width: 100%;
   max-width: 360px;
-  max-height: 40px;
-  padding: 18px 24px;
+  height: 56px;
+  padding: 0 24px;
   background-color: var(--color-primary);
   border-radius: 40px;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .cta-button span {
@@ -273,11 +274,13 @@
 }
 
 .cta-icon {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   flex-shrink: 0;
-  margin-left: -30px;
+  margin-left: -35px;
+  position: relative;
+  left: 10px;
 }
 
 /* =========================
@@ -340,6 +343,48 @@
   .requirements-dots {
     margin-top: 24px;
     gap: 12px;
+  }
+
+  .learn-section {
+    padding: 60px 80px;
+  }
+
+  .learn-title-line {
+    width: 181px;
+    height: 4px;
+    margin-top: 22px;
+  }
+
+  .learn-grid {
+    max-width: 1100px;
+    gap: 48px 80px;
+  }
+
+  .learn-check {
+    width: 44px;
+    height: 44px;
+  }
+
+  .cta-section {
+    padding: 60px 80px;
+  }
+
+  .cta-button {
+    max-width: 700px;
+    height: 140px;
+    padding: 0 80px;
+    border-radius: 80px;
+  }
+
+  .cta-button span {
+    font-size: 56px;
+  }
+
+  .cta-icon {
+    width: 240px;
+    height: 240px;
+    margin-left: -80px;
+    left: 20px;
   }
 }
 
