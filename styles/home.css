@@ -700,4 +700,47 @@
   .testimonials-track {
   gap: 48px;
   }
+
+  /* --- FAQ --- */
+.faq-section {
+  padding: 74px 44px;
+  border-bottom-width: 4px;
+}
+
+.faq-header {
+  margin-bottom: 56px;
+}
+
+.faq-title-line {
+  width: 181px;
+  height: 4px;
+  margin-top: 22px;
+}
+
+.faq-list {
+  max-width: 1100px;
+  gap: 16px;
+}
+
+.faq-question {
+  font-size: 20px;
+  padding: 24px;
+}
+
+.faq-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.faq-answer {
+  padding: 0 24px;
+}
+
+.faq-item.open .faq-answer {
+  padding: 0 24px 24px;
+}
+
+.faq-answer p {
+  font-size: 18px;
+}
 }
