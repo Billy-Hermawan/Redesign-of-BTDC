@@ -280,3 +280,66 @@
   margin-left: -30px;
 }
 
+/* =========================
+   DESKTOP OVERRIDES — 1440px
+========================= */
+
+@media (min-width: 1440px) {
+  .requirements-section {
+    padding: 60px 44px;
+  }
+
+  .requirements-header {
+    margin-bottom: 48px;
+  }
+
+  .requirements-title-line {
+    width: 181px;
+    height: 4px;
+    margin-top: 22px;
+  }
+
+  .requirements-track-wrapper {
+    width: calc(3 * 300px + 2 * 24px);
+  }
+
+  .requirements-track {
+    gap: 24px;
+  }
+
+  .req-card {
+    min-width: 300px;
+    height: 260px;
+    border-width: 2px;
+  }
+
+  .req-image {
+    width: 130px;
+    height: 130px;
+  }
+
+  .req-label {
+    font-size: 24px;
+    max-width: none;
+  }
+
+  .req-arrow img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .req-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .req-dot:nth-child(n+4) {
+    display: none;
+  }
+
+  .requirements-dots {
+    margin-top: 24px;
+    gap: 12px;
+  }
+}
+

@@ -75,46 +75,92 @@ if (heroBg) {
   startCarousel();
 }
 
-function initCarousel(trackSelector, dotSelector, prevSelector, nextSelector, cardWidth, delay) {
-  const track = document.querySelector(trackSelector);
+
+// init testimonials (responsive: 1-up mobile, 3-up desktop)
+(function () {
+  const track = document.querySelector('.testimonials-track');
   if (!track) return;
 
-  const dots = document.querySelectorAll(dotSelector);
-  const prevBtn = document.querySelector(prevSelector);
-  const nextBtn = document.querySelector(nextSelector);
-  const total = track.querySelectorAll('.testimonial-card, .req-card').length;
+  const dots = Array.from(document.querySelectorAll('.testimonial-dot'));
+  const prevBtn = document.querySelector('.testimonial-arrow-left');
+  const nextBtn = document.querySelector('.testimonial-arrow-right');
+  const TOTAL = track.querySelectorAll('.testimonial-card').length;
   let current = 0;
   let autoTimer;
 
+  function isDesktop() { return window.innerWidth >= 1440; }
+  function cardWidth() { return isDesktop() ? 369 + 48 : 260; }
+  function cardsPerView() { return isDesktop() ? 3 : 1; }
+  function totalSteps() { return TOTAL - cardsPerView() + 1; }
+
+  function updateDots() {
+    const steps = totalSteps();
+    dots.forEach((dot, i) => { dot.style.display = i < steps ? '' : 'none'; });
+  }
+
   function goTo(index) {
-    current = (index + total) % total;
-    track.style.transform = `translateX(-${current * cardWidth}px)`;
+    const steps = totalSteps();
+    current = ((index % steps) + steps) % steps;
+    track.style.transform = `translateX(-${current * cardWidth()}px)`;
     dots.forEach(d => d.classList.remove('active'));
     if (dots[current]) dots[current].classList.add('active');
   }
 
-  function startAuto() {
-    autoTimer = setInterval(() => goTo(current + 1), delay);
-  }
-
-  function resetAuto() {
-    clearInterval(autoTimer);
-    startAuto();
-  }
+  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4000); }
+  function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
   nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
   prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
   dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+  window.addEventListener('resize', () => { updateDots(); goTo(0); });
 
+  updateDots();
   goTo(0);
   startAuto();
-}
+})();
 
-// init testimonials
-initCarousel('.testimonials-track', '.testimonial-dot', '.testimonial-arrow-left', '.testimonial-arrow-right', 260, 4000);
+// init requirements (responsive: 1-up mobile, 3-up desktop)
+(function () {
+  const track = document.querySelector('.requirements-track');
+  if (!track) return;
 
-// init requirements
-initCarousel('.requirements-track', '.req-dot', '.req-arrow-left', '.req-arrow-right', 260, 5000);
+  const dots = Array.from(document.querySelectorAll('.req-dot'));
+  const prevBtn = document.querySelector('.req-arrow-left');
+  const nextBtn = document.querySelector('.req-arrow-right');
+  const TOTAL = track.querySelectorAll('.req-card').length;
+  let current = 0;
+  let autoTimer;
+
+  function isDesktop() { return window.innerWidth >= 1440; }
+  function cardWidth() { return isDesktop() ? 324 : 260; } // 300px card + 24px gap
+  function cardsPerView() { return isDesktop() ? 3 : 1; }
+  function totalSteps() { return TOTAL - cardsPerView() + 1; }
+
+  function updateDots() {
+    const steps = totalSteps();
+    dots.forEach((dot, i) => { dot.style.display = i < steps ? '' : 'none'; });
+  }
+
+  function goTo(index) {
+    const steps = totalSteps();
+    current = ((index % steps) + steps) % steps;
+    track.style.transform = `translateX(-${current * cardWidth()}px)`;
+    dots.forEach(d => d.classList.remove('active'));
+    if (dots[current]) dots[current].classList.add('active');
+  }
+
+  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5000); }
+  function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+  window.addEventListener('resize', () => { updateDots(); goTo(0); });
+
+  updateDots();
+  goTo(0);
+  startAuto();
+})();
 
 // --- FAQ Accordion ---
 const faqItems = document.querySelectorAll('.faq-item');
