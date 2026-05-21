@@ -12,6 +12,7 @@
   --color-primary: #314a2e;
   --color-line: #c8b39c;
   --color-surface: #ffffff;
+  --color-ascent: #a3aa9b;
 }
 html,
 body {
@@ -138,6 +139,32 @@ body {
   gap: 16px;
 }
 
+.header-cart {
+  position: relative;
+  display: flex;
+}
+
+.cart-badge {
+  display: none;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-badge.visible {
+  display: flex;
+}
+
 .header-icon {
   width: 32px;
   height: 32px;
@@ -240,8 +267,16 @@ body {
 
 @media (min-width: 1440px) {
   /* --- Header --- */
-    .header {
+  .header {
     padding: 40px 60px;
+  }
+
+  .cart-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    top: -6px;
+    right: -6px;
   }
 
   .header-nav {

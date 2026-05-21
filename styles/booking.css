@@ -1,13 +1,218 @@
 /* Club rules, location card, calendar, time slots, add-to-cart area */
 
 /* =========================
+   ADD TO CART — Mobile 390px
+========================= */
+
+.add-to-cart-section {
+  background-color: var(--color-page-bg);
+  padding: 28px 24px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  max-width: 260px;
+  height: 56px;
+  border-radius: 40px;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-surface);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-to-cart-btn span {
+  color: var(--color-primary);
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.add-to-cart-btn.active {
+  background-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.add-to-cart-btn.active span {
+  color: var(--color-surface);
+}
+
+/* =========================
+   TIME SLOTS — Mobile 390px
+========================= */
+
+.time-section {
+  background-color: var(--color-page-bg);
+  padding: 30px 24px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.time-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.time-header h2 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.time-title-line {
+  width: 49px;
+  height: 1px;
+  background-color: var(--color-line);
+  margin: 8px auto 0;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.time-slot {
+  height: 36px;
+  border: 1px solid var(--color-text-dark);
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  cursor: default;
+  box-sizing: border-box;
+}
+
+.time-slot.available {
+  cursor: pointer;
+}
+
+.time-slot.selected {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-surface);
+  cursor: pointer;
+}
+
+/* =========================
+   CALENDAR — Mobile 390px
+========================= */
+
+.calendar-section {
+  background-color: var(--color-page-bg);
+  padding: 30px 16px;
+  border-bottom: 1px solid var(--color-line);
+  display: flex;
+  justify-content: center;
+}
+
+.calendar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.calendar-card {
+  border: 1px solid var(--color-text-dark);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  padding: 14px 12px;
+  width: 272px;
+}
+
+.cal-month-year {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--color-primary);
+  transition: opacity 0.25s ease;
+}
+
+.cal-month-year.fading {
+  opacity: 0;
+}
+
+.cal-header-line {
+  height: 1px;
+  background-color: var(--color-text-dark);
+  margin: 8px 0 10px;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px 2px;
+  transition: opacity 0.25s ease;
+}
+
+.cal-grid.fading {
+  opacity: 0;
+}
+
+.cal-day {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  color: var(--color-primary);
+  cursor: default;
+  justify-self: center;
+  box-sizing: border-box;
+}
+
+.cal-day.available {
+  background-color: var(--color-ascent);
+  border-color: var(--color-text-dark);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.cal-day.selected {
+  background-color: var(--color-line);
+  border-color: var(--color-text-dark);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.cal-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.cal-arrow img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* =========================
    LOCATION CARD — Mobile 390px
 ========================= */
 
 .location-section {
   background-color: var(--color-page-bg);
   padding: 30px 24px;
-  border-bottom: 1px solid var(--color-line);
   display: flex;
   justify-content: center;
 }

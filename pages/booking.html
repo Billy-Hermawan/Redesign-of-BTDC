@@ -30,6 +30,7 @@
         <div class="header-right">
             <a href="checkout.html" class="header-cart">
                 <img src="../assets/icons/cart.png" alt="Cart" class="header-icon">
+                <span class="cart-badge" id="cart-badge"></span>
             </a>
             <button class="header-hamburger" aria-label="Menu">
                 <span></span>
@@ -90,6 +91,48 @@
             </div>
             <img src="../assets/images/location-image.png" alt="Location" class="location-img">
         </div>
+    </section>
+
+    <!-- Calendar -->
+    <section class="calendar-section">
+        <div class="calendar-wrapper">
+            <button class="cal-arrow cal-arrow-left" aria-label="Previous month">
+                <img src="../assets/images/left-arrow.png" alt="Previous">
+            </button>
+            <div class="calendar-card">
+                <div class="cal-header">
+                    <span class="cal-month-year" id="cal-month-year">OCT 2026</span>
+                    <div class="cal-header-line"></div>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+            </div>
+            <button class="cal-arrow cal-arrow-right" aria-label="Next month">
+                <img src="../assets/images/right-arrow.png" alt="Next">
+            </button>
+        </div>
+    </section>
+
+    <!-- Time Slots -->
+    <section class="time-section">
+        <div class="time-header">
+            <h2 class="text-heading">Time</h2>
+            <div class="time-title-line"></div>
+        </div>
+        <div class="time-grid" id="time-grid">
+            <div class="time-slot"></div>
+            <div class="time-slot"></div>
+            <div class="time-slot"></div>
+            <div class="time-slot"></div>
+            <div class="time-slot"></div>
+            <div class="time-slot"></div>
+        </div>
+    </section>
+
+    <!-- Add to Cart -->
+    <section class="add-to-cart-section">
+        <button class="add-to-cart-btn" id="add-to-cart-btn">
+            <span class="text-heading">ADD TO CART</span>
+        </button>
     </section>
 
     <!-- Footer -->

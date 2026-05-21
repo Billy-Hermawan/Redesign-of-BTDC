@@ -1,3 +1,14 @@
+// --- Cart Badge ---
+(function () {
+    const badge = document.getElementById('cart-badge');
+    if (!badge) return;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length > 0) {
+        badge.textContent = cart.length;
+        badge.classList.add('visible');
+    }
+})();
+
 // --- Hamburger Menu + Smooth Scroll ---
 const hamburger = document.querySelector('.header-hamburger');
 const mobileMenu = document.querySelector('.header-mobile-menu');
