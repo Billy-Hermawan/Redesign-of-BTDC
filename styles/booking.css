@@ -359,3 +359,230 @@
   color: var(--color-text-dark);
   line-height: 1.4;
 }
+
+/* =========================
+   BOOKING LAYOUT — helpers (mobile hidden)
+========================= */
+
+.booking-divider {
+  display: none;
+}
+
+.cal-menu-icon {
+  display: none;
+}
+
+/* =========================
+   DESKTOP OVERRIDES — 1440px
+========================= */
+
+@media (min-width: 1440px) {
+  .club-rules-section {
+    padding: 60px 100px 80px;
+  }
+
+  .club-rules-header {
+    margin-bottom: 60px;
+  }
+
+  .club-rules-line {
+    width: 181px;
+    height: 4px;
+    margin-top: 20px;
+  }
+
+  .rules-list {
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0;
+  }
+
+  .rule-item {
+    gap: 40px;
+  }
+
+  .rule-check {
+    width: 80px;
+    height: 80px;
+  }
+
+  .rule-text {
+    font-size: 30px;
+  }
+
+  .location-section {
+    padding: 60px 100px;
+    justify-content: flex-start;
+  }
+
+  .location-card {
+    width: 600px;
+    height: 340px;
+    border-radius: 40px;
+  }
+
+  .location-text-area {
+    padding: 24px 330px 24px 28px;
+    gap: 16px;
+  }
+
+  .location-title {
+    font-size: 52px;
+  }
+
+  .location-pin {
+    width: 44px;
+    height: 44px;
+  }
+
+  .location-addr-text {
+    font-size: 26px;
+  }
+
+  .location-maps-btn {
+    font-size: 24px;
+    height: 64px;
+    padding: 0 28px;
+    border-radius: 40px;
+    margin-top: 12px;
+  }
+
+  .location-img {
+    width: 320px;
+  }
+
+  /* Booking main: side-by-side layout */
+  .booking-main {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .booking-divider {
+    display: block;
+    width: 1px;
+    background-color: var(--color-line);
+    flex-shrink: 0;
+  }
+
+  .booking-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Calendar desktop */
+  .calendar-section {
+    flex: 0 0 auto;
+    padding: 60px 60px 60px 24px;
+    border-bottom: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .calendar-wrapper {
+    gap: 20px;
+    align-items: center;
+  }
+
+  .calendar-card {
+    width: 530px;
+    border-radius: 4px;
+    padding: 28px 24px;
+  }
+
+  .cal-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cal-menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cal-menu-icon > span {
+    display: block;
+    width: 36px;
+    height: 3px;
+    background-color: var(--color-text-dark);
+    border-radius: 2px;
+  }
+
+  .cal-month-year {
+    font-size: 52px;
+  }
+
+  .cal-header-line {
+    margin: 16px 0 20px;
+  }
+
+  .cal-grid {
+    gap: 12px 6px;
+  }
+
+  .cal-day {
+    width: 58px;
+    height: 58px;
+    font-size: 18px;
+  }
+
+  .cal-arrow img {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Time slots desktop */
+  .time-section {
+    flex: 0 0 auto;
+    border-bottom: none;
+    padding: 60px 60px 40px;
+  }
+
+  .time-header {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .time-header h2 {
+    font-size: 52px;
+  }
+
+  .time-title-line {
+    display: none;
+  }
+
+  .time-grid {
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .time-slot {
+    height: 80px;
+    font-size: 22px;
+    border-radius: 8px;
+  }
+
+  /* Add to cart desktop */
+  .add-to-cart-section {
+    border-bottom: none;
+    border-top: 1px solid var(--color-line);
+    padding: 48px 60px;
+    justify-content: center;
+  }
+
+  .add-to-cart-btn {
+    max-width: 520px;
+    height: 100px;
+    border-radius: 60px;
+    border: 3px solid var(--color-primary);
+  }
+
+  .add-to-cart-btn span {
+    font-size: 36px;
+  }
+}
