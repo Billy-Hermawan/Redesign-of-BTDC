@@ -1,6 +1,7 @@
 /* =========================
    CHECKOUT PAGE
    Mobile: stacked (summary on top, form below)
+   Desktop (1440px): side-by-side
 ========================= */
 
 /* Override course-back absolute positioning */
@@ -388,4 +389,156 @@
 
 .checkout-pay-btn:hover {
   opacity: 0.88;
+}
+
+/* ── Desktop overrides — 1440px ──────────────────── */
+
+@media (min-width: 1440px) {
+  .checkout-main {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: calc(100vh - 100px);
+    position: relative;
+  }
+
+  .checkout-left {
+    width: 440px;
+    flex-shrink: 0;
+    padding: 52px 52px;
+    border-bottom: none;
+    border-right: 1px solid var(--color-line);
+  }
+
+  .checkout-left.collapsed {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .checkout-back {
+    font-size: 15px;
+    padding: 7px 14px;
+    margin-bottom: 36px;
+  }
+
+  .checkout-summary-title {
+    font-size: 44px;
+  }
+
+  .checkout-summary-underline {
+    height: 2px;
+    margin-bottom: 28px;
+  }
+
+  /* Items list fills remaining space → total pins to bottom */
+  .checkout-items {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .checkout-item {
+    padding: 20px 0;
+    gap: 18px;
+  }
+
+  .checkout-item-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+  }
+
+  .checkout-item-name {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .checkout-item-date {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .checkout-item-price {
+    font-size: 17px;
+  }
+
+  .checkout-total-amount {
+    font-size: 56px;
+  }
+
+  .checkout-total-label {
+    font-size: 18px;
+  }
+
+  /* Collapse toggle — absolute tab that sits on the border line */
+  .checkout-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 440px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 44px;
+    background-color: var(--color-page-bg);
+    border: 1px solid var(--color-line);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    z-index: 2;
+    transition: left 0.3s ease;
+  }
+
+  .checkout-left.collapsed ~ .checkout-toggle-btn {
+    left: 0;
+  }
+
+  .checkout-toggle-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    opacity: 0.45;
+    transition: opacity 0.2s, transform 0.3s ease;
+  }
+
+  .checkout-toggle-btn:hover .checkout-toggle-icon {
+    opacity: 1;
+  }
+
+  .checkout-toggle-icon.flipped {
+    transform: rotate(180deg);
+  }
+
+  /* Right form */
+  .checkout-right {
+    padding: 60px 80px;
+    overflow-y: auto;
+  }
+
+  .checkout-form-inner {
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .checkout-form-title {
+    font-size: 44px;
+    margin-bottom: 16px;
+  }
+
+  .checkout-section-label {
+    font-size: 16px;
+  }
+
+  .checkout-input {
+    height: 48px;
+    font-size: 15px;
+  }
+
+  .checkout-pay-btn {
+    height: 64px;
+    font-size: 17px;
+    border-radius: 10px;
+    margin-top: 12px;
+  }
 }
