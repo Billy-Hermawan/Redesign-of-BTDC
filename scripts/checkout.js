@@ -29,6 +29,7 @@
 
   // ── Cart ────────────────────────────────────────────────────────────
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let isFreeOrder = false;
 
   // ── Render cart items ───────────────────────────────────────────────
   function renderCart() {
@@ -157,6 +158,13 @@
         discountBtn.disabled    = true;
         discountInput.disabled  = true;
         discountInput.style.borderColor = 'var(--color-primary)';
+      } else if (code === 'FREE') {
+        isFreeOrder = true;
+        discountBtn.textContent = 'Applied ✓';
+        discountBtn.disabled    = true;
+        discountInput.disabled  = true;
+        discountInput.style.borderColor = 'var(--color-primary)';
+        updateTotals(0);
       } else {
         discountInput.style.borderColor = '#e05a5a';
         setTimeout(() => { discountInput.style.borderColor = ''; }, 1800);
@@ -178,6 +186,23 @@
   if (payBtn) {
     payBtn.addEventListener('click', () => {
       if (cart.length === 0) return;
+
+      // FREE code — skip all validation and go straight to confirmation
+      if (isFreeOrder) {
+        localStorage.setItem('lastOrder', JSON.stringify({
+          items: cart.map(item => ({ ...item, ...(COURSES[item.course] || {}) })),
+          subtotal: 0,
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          paymentMethod: 'free',
+          orderedAt: new Date().toISOString()
+        }));
+        localStorage.removeItem('cart');
+        window.location.href = 'confirmation.html';
+        return;
+      }
 
       let hasError = false;
       ['first-name', 'last-name', 'email', 'phone'].forEach(id => {

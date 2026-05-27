@@ -327,7 +327,7 @@
       "🐶 <strong>Course recommendations</strong> — just tell me your dog's age\n" +
       "📅 <strong>How to book</strong> a session\n" +
       "💰 <strong>Pricing</strong> and what to bring\n" +
-      "📍 <strong>Location</strong> and opening hours\n\n" +
+      "📍 <strong>Location</strong>\n\n" +
       "What would you like to know?"
     );
   }
