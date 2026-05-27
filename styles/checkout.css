@@ -224,10 +224,6 @@
   flex-shrink: 0;
 }
 
-/* Collapse toggle — hidden on mobile */
-.checkout-toggle-btn {
-  display: none;
-}
 
 /* ── Right: Checkout Form ── */
 .checkout-right {
@@ -398,7 +394,6 @@
     flex-direction: row;
     align-items: stretch;
     min-height: calc(100vh - 100px);
-    position: relative;
   }
 
   .checkout-left {
@@ -407,12 +402,6 @@
     padding: 52px 52px;
     border-bottom: none;
     border-right: 1px solid var(--color-line);
-  }
-
-  .checkout-left.collapsed {
-    width: 0;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   .checkout-back {
@@ -468,46 +457,6 @@
 
   .checkout-total-label {
     font-size: 18px;
-  }
-
-  /* Collapse toggle — absolute tab that sits on the border line */
-  .checkout-toggle-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 440px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 22px;
-    height: 44px;
-    background-color: var(--color-page-bg);
-    border: 1px solid var(--color-line);
-    border-left: none;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    z-index: 2;
-    transition: left 0.3s ease;
-  }
-
-  .checkout-left.collapsed ~ .checkout-toggle-btn {
-    left: 0;
-  }
-
-  .checkout-toggle-icon {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    opacity: 0.45;
-    transition: opacity 0.2s, transform 0.3s ease;
-  }
-
-  .checkout-toggle-btn:hover .checkout-toggle-icon {
-    opacity: 1;
-  }
-
-  .checkout-toggle-icon.flipped {
-    transform: rotate(180deg);
   }
 
   /* Right form */

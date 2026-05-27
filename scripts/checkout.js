@@ -243,16 +243,5 @@
     });
   }
 
-  // ── Left panel collapse toggle (desktop) ────────────────────────────
-  const toggleBtn  = document.getElementById('checkout-toggle-btn');
-  const toggleIcon = document.getElementById('checkout-toggle-icon');
-  const leftPanel  = document.getElementById('checkout-left');
-
-  if (toggleBtn && leftPanel) {
-    toggleBtn.addEventListener('click', () => {
-      leftPanel.classList.toggle('collapsed');
-      if (toggleIcon) toggleIcon.classList.toggle('flipped');
-    });
-  }
 
 })();
