@@ -1,32 +1,227 @@
-<!--
-Contains:
+<!DOCTYPE html>
+<html lang="en">
 
-Header / navbar
-Back to Home link
-Order Summary section
-Cart items
-Discount/gift code input
-Total price
-Personal Details form
-Payment section
-Pay button
-Footer
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/course-detail.css">
+    <link rel="stylesheet" href="../styles/checkout.css">
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
 
-Links/buttons:
+<body>
 
-Back to Home → ../index.html
-Home nav → ../index.html
-Courses nav → ../index.html#courses
-Contact nav → ../index.html#contact
-Cart icon → checkout.html
-Apply discount button → checks discount code
-Pay button → validates form and goes to confirmation.html
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="header-logo-link">
+            <img src="../assets/icons/logo.png" alt="Brisbane Dog Training Club" class="header-logo">
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html#home" class="header-link">Home</a>
+            <a href="../index.html#courses" class="header-link">Courses</a>
+            <a href="../index.html#contact" class="header-link">Contact</a>
+        </nav>
+        <div class="header-right">
+            <a href="checkout.html" class="header-cart">
+                <img src="../assets/icons/cart.png" alt="Cart" class="header-icon">
+                <span class="cart-badge" id="cart-badge"></span>
+            </a>
+            <button class="header-hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="header-mobile-menu">
+            <a href="../index.html#home" class="header-mobile-link">Home</a>
+            <a href="../index.html#courses" class="header-mobile-link">Courses</a>
+            <a href="../index.html#contact" class="header-mobile-link">Contact</a>
+        </div>
+    </header>
 
-JavaScript notes:
+    <!-- Checkout layout -->
+    <main class="checkout-main">
 
-Loads cart items from localStorage
-Displays course name, image, and price
-Calculates total price
-Checks that required form fields are filled
-Saves final order to localStorage
--->
+        <!-- ── Left: Order Summary ── -->
+        <aside class="checkout-left" id="checkout-left">
+            <a href="../index.html" class="course-back checkout-back">← Back To Home</a>
+
+            <h2 class="checkout-summary-title">Order Summary</h2>
+            <div class="checkout-summary-underline"></div>
+
+            <!-- Items rendered by JS -->
+            <div class="checkout-items" id="checkout-items"></div>
+
+            <!-- Discount code -->
+            <div class="checkout-discount-row" id="checkout-discount-row">
+                <input type="text" id="discount-input" class="checkout-discount-input"
+                    placeholder="Gift or discount code">
+                <button class="checkout-discount-btn" id="discount-btn">Apply</button>
+            </div>
+
+            <div class="checkout-total-divider" id="checkout-total-divider"></div>
+
+            <!-- Total -->
+            <div class="checkout-total-row" id="checkout-total-row">
+                <div>
+                    <p class="checkout-total-label">Total</p>
+                    <p class="checkout-tax-note" id="checkout-tax-note">Including $0 in taxes</p>
+                </div>
+                <span class="checkout-total-amount" id="checkout-total">$0</span>
+            </div>
+        </aside>
+
+        <!-- Collapse toggle (desktop only) -->
+        <button class="checkout-toggle-btn" id="checkout-toggle-btn" aria-label="Toggle order summary">
+            <img src="../assets/images/left-arrow.png" alt="" class="checkout-toggle-icon" id="checkout-toggle-icon">
+        </button>
+
+        <!-- ── Right: Checkout Form ── -->
+        <section class="checkout-right">
+            <div class="checkout-form-inner">
+
+                <h1 class="checkout-form-title">Complete your order!</h1>
+                <div class="checkout-form-line"></div>
+
+                <!-- Personal Details -->
+                <div class="checkout-section">
+                    <h3 class="checkout-section-label">Personal Details</h3>
+                    <div class="checkout-section-line"></div>
+
+                    <div class="checkout-field">
+                        <label class="checkout-label" for="first-name">First name</label>
+                        <input type="text" id="first-name" class="checkout-input" autocomplete="given-name">
+                    </div>
+                    <div class="checkout-field">
+                        <label class="checkout-label" for="last-name">Last Name</label>
+                        <input type="text" id="last-name" class="checkout-input" autocomplete="family-name">
+                    </div>
+                    <div class="checkout-field">
+                        <label class="checkout-label" for="email">Gmail</label>
+                        <input type="email" id="email" class="checkout-input" autocomplete="email">
+                    </div>
+                    <div class="checkout-field">
+                        <label class="checkout-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="checkout-input" autocomplete="tel">
+                    </div>
+                </div>
+
+                <!-- Payment -->
+                <div class="checkout-section">
+                    <h3 class="checkout-section-label">Payment</h3>
+                    <div class="checkout-section-line"></div>
+
+                    <div class="checkout-pay-with">
+                        <span class="checkout-pay-with-label">Pay With:</span>
+                        <label class="checkout-radio-label">
+                            <input type="radio" name="payment-method" value="card" checked class="checkout-radio"> Card
+                        </label>
+                        <label class="checkout-radio-label">
+                            <input type="radio" name="payment-method" value="bank" class="checkout-radio"> Bank
+                        </label>
+                        <label class="checkout-radio-label">
+                            <input type="radio" name="payment-method" value="transfer" class="checkout-radio"> Transfer
+                        </label>
+                    </div>
+
+                    <!-- Card fields -->
+                    <div id="card-fields">
+                        <div class="checkout-field">
+                            <label class="checkout-label" for="card-number">Card Number</label>
+                            <input type="text" id="card-number" class="checkout-input"
+                                placeholder="1234  5678  9101  1121" maxlength="19" autocomplete="cc-number">
+                        </div>
+                        <div class="checkout-fields-row">
+                            <div class="checkout-field">
+                                <label class="checkout-label" for="expiry">Expiration Date</label>
+                                <input type="text" id="expiry" class="checkout-input" placeholder="MM/YY"
+                                    maxlength="5" autocomplete="cc-exp">
+                            </div>
+                            <div class="checkout-field">
+                                <label class="checkout-label" for="cvv">CVV</label>
+                                <input type="text" id="cvv" class="checkout-input" placeholder="123"
+                                    maxlength="4" autocomplete="cc-csc">
+                            </div>
+                        </div>
+                        <label class="checkout-save-card">
+                            <input type="checkbox" id="save-card"> Save card details
+                        </label>
+                    </div>
+
+                    <!-- Bank fields -->
+                    <div id="bank-fields" style="display:none">
+                        <div class="checkout-field">
+                            <label class="checkout-label" for="bsb">BSB</label>
+                            <input type="text" id="bsb" class="checkout-input" placeholder="000-000">
+                        </div>
+                        <div class="checkout-field">
+                            <label class="checkout-label" for="account-number">Account Number</label>
+                            <input type="text" id="account-number" class="checkout-input" placeholder="12345678">
+                        </div>
+                    </div>
+
+                    <!-- Transfer info -->
+                    <div id="transfer-fields" style="display:none">
+                        <p class="checkout-transfer-note">
+                            Please transfer to:<br>
+                            <strong>BSB:</strong> 062-000 &nbsp;
+                            <strong>Account:</strong> 1234 5678<br>
+                            <strong>Reference:</strong> Your full name
+                        </p>
+                    </div>
+                </div>
+
+                <button class="checkout-pay-btn" id="checkout-pay-btn">
+                    Pay AUD <span id="pay-amount">0</span>
+                </button>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <img src="../assets/icons/white-logo.png" alt="Brisbane Dog Training Club" class="footer-logo">
+        <div class="footer-blocks">
+            <div class="footer-block">
+                <h3 class="footer-heading">Hours</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/time.png" alt="Hours" class="footer-icon">
+                    <p class="footer-text">Monday to Sunday<br>8AM - 8PM</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Contact</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/gmail.png" alt="Email" class="footer-icon">
+                    <p class="footer-text">brisbanedogtrainingclub.com</p>
+                </div>
+                <div class="footer-row">
+                    <img src="../assets/icons/phone.png" alt="Phone" class="footer-icon">
+                    <p class="footer-text">+61 413223190</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Social</h3>
+                <a href="https://www.facebook.com/bdtc1" target="_blank">
+                    <img src="../assets/icons/facebook.png" alt="Facebook" class="footer-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/checkout.js"></script>
+    <script src="../scripts/chatbot.js"></script>
+
+</body>
+
+</html>
