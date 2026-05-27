@@ -1,31 +1,102 @@
-<!--
-Contains:
+<!DOCTYPE html>
+<html lang="en">
 
-Header / navbar
-Back to Home link
-Success check icon
-“You’re All Set” title
-Confirmed order cards
-Course name
-Booking code
-Location
-Selected time
-Selected date
-Footer
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/course-detail.css">
+    <link rel="stylesheet" href="../styles/confirmation.css">
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
 
-Links/buttons:
+<body>
 
-Back to Home → ../index.html
-Home nav → ../index.html
-Courses nav → ../index.html#courses
-Contact nav → ../index.html#contact
-Cart icon → checkout.html
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="header-logo-link">
+            <img src="../assets/icons/logo.png" alt="Brisbane Dog Training Club" class="header-logo">
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html#home" class="header-link">Home</a>
+            <a href="../index.html#courses" class="header-link">Courses</a>
+            <a href="../index.html#contact" class="header-link">Contact</a>
+        </nav>
+        <div class="header-right">
+            <a href="checkout.html" class="header-cart">
+                <img src="../assets/icons/cart.png" alt="Cart" class="header-icon">
+                <span class="cart-badge" id="cart-badge"></span>
+            </a>
+            <button class="header-hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="header-mobile-menu">
+            <a href="../index.html#home" class="header-mobile-link">Home</a>
+            <a href="../index.html#courses" class="header-mobile-link">Courses</a>
+            <a href="../index.html#contact" class="header-mobile-link">Contact</a>
+        </div>
+    </header>
 
-JavaScript notes:
+    <!-- Main -->
+    <main class="confirmation-main">
 
-Loads final order from localStorage
-Displays confirmed courses
-Displays selected date and time
-Displays generated booking code
-Optional: clears cart after confirmation
--->
+        <!-- Hero: confetti + check + title -->
+        <section class="confirmation-hero">
+            <a href="../index.html" class="course-back confirmation-back">← Back To Home</a>
+            <img src="../assets/icons/check.png" alt="Order confirmed" class="confirmation-check">
+            <h1 class="confirmation-title">You're All Set</h1>
+            <div class="confirmation-title-line"></div>
+        </section>
+
+        <!-- Order cards rendered by JS -->
+        <div class="confirmation-cards" id="confirmation-cards"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <img src="../assets/icons/white-logo.png" alt="Brisbane Dog Training Club" class="footer-logo">
+        <div class="footer-blocks">
+            <div class="footer-block">
+                <h3 class="footer-heading">Hours</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/time.png" alt="Hours" class="footer-icon">
+                    <p class="footer-text">Monday to Sunday<br>8AM - 8PM</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Contact</h3>
+                <div class="footer-row">
+                    <img src="../assets/icons/gmail.png" alt="Email" class="footer-icon">
+                    <p class="footer-text">brisbanedogtrainingclub.com</p>
+                </div>
+                <div class="footer-row">
+                    <img src="../assets/icons/phone.png" alt="Phone" class="footer-icon">
+                    <p class="footer-text">+61 413223190</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <h3 class="footer-heading">Social</h3>
+                <a href="https://www.facebook.com/bdtc1" target="_blank">
+                    <img src="../assets/icons/facebook.png" alt="Facebook" class="footer-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/confirmation.js"></script>
+    <script src="../scripts/chatbot.js"></script>
+
+</body>
+
+</html>
