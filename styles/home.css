@@ -1,14 +1,4 @@
-/* Hero, About, Courses, Testimonials, FAQ, Doggo AI floating button */
-/* Typography handled by main.css — add these classes to your HTML:
-   h1            → text-heading
-   .hero-text p  → text-subtitle
-   about h2      → text-heading
-   about p       → text-body
-   courses h2    → text-heading
-   course h3     → text-subheading
-   course p      → text-body
-   .course-button → text-ui
-*/
+/* Hero, About, Courses, Testimonials, FAQ */
 
 /* =========================
    HERO SECTION — Mobile 390px
@@ -68,19 +58,6 @@
   z-index: 3;
 }
 
-.hero-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.75);
-  padding: 0;
-  background-color: var(--color-surface);
-  cursor: pointer;
-}
-
-.hero-dot.active {
-  background-color: var(--color-primary);
-}
 
 /* =========================
    ABOUT SECTION — Mobile 390px
@@ -97,7 +74,7 @@
 
 .about-content {
   display: flex;
-  flex-direction: column; /* stack vertically on mobile */
+  flex-direction: column;
   align-items: center;
   gap: 21px;
   width: 100%;
@@ -116,17 +93,12 @@
 .about-text h2 {
   margin: 0;
   color: var(--color-primary);
-  text-align: center; /* was left */
+  text-align: center;
 }
 
 .about-title-line {
-  width: 49px;
-  height: 1px;
-  background-color: var(--color-line);
   margin-top: 10px;
   margin-bottom: 14px;
-  margin-left: auto; /* centre the line */
-  margin-right: auto;
 }
 
 .about-text p {
@@ -146,21 +118,7 @@
 }
 
 .courses-header {
-  text-align: center;
   margin-bottom: 40px;
-}
-
-.courses-header h2 {
-  margin: 0;
-  color: var(--color-primary);
-  text-align: center;
-}
-
-.courses-title-line {
-  width: 49px;
-  height: 1px;
-  background-color: var(--color-line);
-  margin: 8px auto 0;
 }
 
 .courses-grid {
@@ -184,14 +142,13 @@
   width: 275px;
   aspect-ratio: 275 / 128;
   border-radius: 20px;
-  border: 1px solid #3c3c3c;
+  border: 1px solid var(--color-text-dark);
   object-fit: cover;
   display: block;
 }
 
 .course-info {
   width: 211px;
-  min-height: auto;
   margin-top: -24px;
   padding: 10px 12px;
   background-color: var(--color-surface);
@@ -240,20 +197,7 @@
 }
 
 .testimonials-header {
-  text-align: center;
   margin-bottom: 28px;
-}
-
-.testimonials-header h2 {
-  margin: 0;
-  color: var(--color-primary);
-}
-
-.testimonials-title-line {
-  width: 49px;
-  height: 1px;
-  background-color: var(--color-line);
-  margin: 8px auto 0;
 }
 
 /* --- Mobile carousel --- */
@@ -301,9 +245,6 @@
   height: 24px;
 }
 
-.testimonial-arrow:hover {
-  color: var(--color-primary);
-}
 
 /* --- Dots --- */
 .testimonials-dots {
@@ -311,20 +252,6 @@
   justify-content: center;
   gap: 8px;
   margin-top: 16px;
-}
-
-.testimonial-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.75);
-  padding: 0;
-  background-color: var(--color-surface);
-  cursor: pointer;
-}
-
-.testimonial-dot.active {
-  background-color: var(--color-primary);
 }
 
 .testimonial-quote {
@@ -399,20 +326,7 @@
 }
 
 .faq-header {
-  text-align: center;
   margin-bottom: 28px;
-}
-
-.faq-header h2 {
-  margin: 0;
-  color: var(--color-primary);
-}
-
-.faq-title-line {
-  width: 49px;
-  height: 1px;
-  background-color: var(--color-line);
-  margin: 8px auto 0;
 }
 
 .faq-list {
@@ -504,14 +418,17 @@
   }
 
   /* --- About --- */
+  .about-section {
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+  }
+
   .about-content {
     margin-top: 74px;
     margin-bottom: 74px;
-    border-top-width: 4px;
-    border-bottom-width: 4px;
     flex-direction: row;
     align-items: flex-end;
-    gap: 100px; /* more space between image and text */
+    gap: 100px;
   }
 
   .about-text h2 {
@@ -520,11 +437,6 @@
 
   .about-text p {
     text-align: left;
-  }
-
-  .about-title-line {
-    margin-left: 0;
-    margin-right: 0;
   }
 
   .about-image {
@@ -538,10 +450,7 @@
   }
 
   .about-title-line {
-    width: 181px;
-    height: 4px;
-    margin-top: 32px;
-    margin-bottom: 33px;
+    margin: 32px 0 33px;
   }
 
   /* --- Courses --- */
@@ -555,11 +464,6 @@
     margin-bottom: 79px;
   }
 
-  .courses-title-line {
-    width: 181px;
-    height: 4px;
-    margin-top: 22px;
-  }
 
   .courses-grid {
     display: grid;
@@ -616,18 +520,6 @@
 
   /* --- Testimonials --- */
 
-  .testimonials-grid {
-    display: none;
-  }
-
-  .testimonials-carousel {
-    display: flex;
-  }
-
-  .testimonials-dots {
-    display: flex;
-  }
-
   .testimonials-track-wrapper {
     width: calc(3 * 369px + 2 * 48px);
   }
@@ -680,7 +572,6 @@
   }
 
   .testimonials-section {
-    min-height: 857px;
     padding: 74px 44px;
     border-bottom-width: 4px;
   }
@@ -689,11 +580,6 @@
     margin-bottom: 79px;
   }
 
-  .testimonials-title-line {
-    width: 181px;
-    height: 4px;
-    margin-top: 22px;
-  }
   .testimonials-track {
     gap: 48px;
   }
@@ -708,11 +594,6 @@
     margin-bottom: 56px;
   }
 
-  .faq-title-line {
-    width: 181px;
-    height: 4px;
-    margin-top: 22px;
-  }
 
   .faq-list {
     max-width: 1100px;

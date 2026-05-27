@@ -22,20 +22,17 @@
         <img src="assets/icons/logo.png" alt="Brisbane Dog Training Club" class="header-logo">
     </a>
 
-    <!-- Desktop nav -->
     <nav class="header-nav">
         <a href="#home" class="header-link">Home</a>
         <a href="#courses" class="header-link">Courses</a>
         <a href="#contact" class="header-link">Contact</a>
     </nav>
 
-    <!-- Right side icons -->
     <div class="header-right">
         <a href="pages/checkout.html" class="header-cart">
             <img src="assets/icons/cart.png" alt="Cart" class="header-icon">
             <span class="cart-badge" id="cart-badge"></span>
         </a>
-        <!-- Hamburger (mobile only) -->
         <button class="header-hamburger" aria-label="Menu">
             <span></span>
             <span></span>
@@ -43,7 +40,6 @@
         </button>
     </div>
 
-    <!-- Mobile menu -->
     <div class="header-mobile-menu">
         <a href="#home" class="header-mobile-link">Home</a>
         <a href="#courses" class="header-mobile-link">Courses</a>
@@ -60,9 +56,9 @@
         </div>
 
         <div class="hero-dots">
-            <button class="hero-dot active" aria-label="Show hero image 1"></button>
-            <button class="hero-dot" aria-label="Show hero image 2"></button>
-            <button class="hero-dot" aria-label="Show hero image 3"></button>
+            <button class="hero-dot carousel-dot active" aria-label="Show hero image 1"></button>
+            <button class="hero-dot carousel-dot" aria-label="Show hero image 2"></button>
+            <button class="hero-dot carousel-dot" aria-label="Show hero image 3"></button>
         </div>
     </section>
 
@@ -73,7 +69,7 @@
 
             <div class="about-text">
                 <h2 class="text-heading">About Us</h2>
-                <div class="about-title-line"></div>
+                <div class="section-line about-title-line"></div>
 
                 <p class="text-body">
                     The Brisbane Dog Training Club Inc, Queensland's longest-running
@@ -92,9 +88,9 @@
     </section>
 
     <section id="courses" class="courses-section">
-        <div class="courses-header">
+        <div class="courses-header section-header">
             <h2 class="text-heading">Courses</h2>
-            <div class="courses-title-line"></div>
+            <div class="section-line"></div>
         </div>
 
         <div class="courses-grid">
@@ -152,12 +148,12 @@
         </div>
     </section>
     <section class="testimonials-section">
-        <div class="testimonials-header">
+        <div class="testimonials-header section-header">
             <h2 class="text-heading">Testimonials</h2>
-            <div class="testimonials-title-line"></div>
+            <div class="section-line"></div>
         </div>
 
-        <!-- Mobile carousel -->
+        <!-- Carousel: mobile only — desktop uses the static grid below -->
         <div class="testimonials-carousel">
             <button class="testimonial-arrow testimonial-arrow-left" aria-label="Previous">
                 <img src="assets/images/left-arrow.png" alt="Previous">
@@ -261,15 +257,15 @@
         </div>
 
         <div class="testimonials-dots">
-            <button class="testimonial-dot active"></button>
-            <button class="testimonial-dot"></button>
-            <button class="testimonial-dot"></button>
-            <button class="testimonial-dot"></button>
-            <button class="testimonial-dot"></button>
-            <button class="testimonial-dot"></button>
+            <button class="testimonial-dot carousel-dot active"></button>
+            <button class="testimonial-dot carousel-dot"></button>
+            <button class="testimonial-dot carousel-dot"></button>
+            <button class="testimonial-dot carousel-dot"></button>
+            <button class="testimonial-dot carousel-dot"></button>
+            <button class="testimonial-dot carousel-dot"></button>
         </div>
 
-        <!-- Desktop grid (hidden on mobile) -->
+        <!-- Static grid: desktop only — hidden on mobile -->
         <div class="testimonials-grid">
             <article class="testimonial-card">
                 <div class="testimonial-quote">&ldquo;</div>
@@ -355,9 +351,9 @@
         </div>
     </section>
     <section class="faq-section">
-        <div class="faq-header">
+        <div class="faq-header section-header">
             <h2 class="text-heading">FAQ</h2>
-            <div class="faq-title-line"></div>
+            <div class="section-line"></div>
         </div>
 
         <div class="faq-list">
@@ -446,32 +442,3 @@
 </body>
 </html>
 
-<!--
- Contains:z
-
-Header / navbar
-Hero carousel
-About Us section
-Courses section
-Testimonials section
-FAQ section
-Footer
-Floating Doggo AI button
-
-Links/buttons:
-
-Home nav → index.html
-Courses nav → scrolls to Courses section or links to index.html#courses
-Contact nav → scrolls to Footer/Contact section or links to index.html#contact
-Cart icon → pages/checkout.html
-Doggo AI floating button → pages/doggo-ai.html
-Learn More on course card → pages/course-detail.html?course=course-id
-
-JavaScript notes:
-
-Hero carousel changes image/text
-Testimonials carousel changes review card
-FAQ opens/closes answers
-Cart number updates from localStorage
-
--->

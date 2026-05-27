@@ -51,7 +51,7 @@ body {
 
 .text-body {
   font-family: "Inter", sans-serif;
-  font-size: 12px; /* was 8px */
+  font-size: 12px;
   font-weight: 400;
   line-height: normal;
 }
@@ -96,6 +96,40 @@ body {
   }
 }
 
+
+/* =========================
+   SHARED UTILITIES
+========================= */
+
+.section-header {
+  text-align: center;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.section-line {
+  width: 49px;
+  height: 1px;
+  background-color: var(--color-line);
+  margin: 8px auto 0;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  padding: 0;
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background-color: var(--color-primary);
+}
 
 /* =========================
    HEADER
@@ -192,20 +226,14 @@ body {
 }
 
 
-.header-mobile-link {
-  color: var(--color-text-dark);
-  text-decoration: none;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-}
-
 .header-link {
   color: var(--color-text-dark);
   text-decoration: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
 
@@ -266,6 +294,12 @@ body {
 
 
 @media (min-width: 1440px) {
+  .section-line {
+    width: 181px;
+    height: 4px;
+    margin-top: 22px;
+  }
+
   /* --- Header --- */
   .header {
     padding: 40px 60px;
@@ -388,11 +422,6 @@ body {
 }
 
 /* Nav link hover */
-.header-link {
-  position: relative;
-  transition: color 0.2s ease;
-}
-
 .header-link::after {
   content: '';
   position: absolute;

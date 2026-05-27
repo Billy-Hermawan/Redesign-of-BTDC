@@ -55,20 +55,7 @@
 }
 
 .time-header {
-  text-align: center;
   margin-bottom: 24px;
-}
-
-.time-header h2 {
-  margin: 0;
-  color: var(--color-primary);
-}
-
-.time-title-line {
-  width: 49px;
-  height: 1px;
-  background-color: var(--color-line);
-  margin: 8px auto 0;
 }
 
 .time-grid {
@@ -180,15 +167,11 @@
 
 .cal-day.available {
   background-color: var(--color-ascent);
-  border-color: var(--color-text-dark);
-  color: var(--color-primary);
   cursor: pointer;
 }
 
 .cal-day.selected {
   background-color: var(--color-line);
-  border-color: var(--color-text-dark);
-  color: var(--color-primary);
   cursor: pointer;
 }
 
@@ -313,20 +296,12 @@
 }
 
 .club-rules-header {
-  text-align: center;
   margin-bottom: 32px;
-}
-
-.club-rules-header h2 {
-  margin: 0;
-  color: var(--color-primary);
 }
 
 .club-rules-line {
   width: 80px;
-  height: 1px;
-  background-color: var(--color-line);
-  margin: 10px auto 0;
+  margin-top: 10px;
 }
 
 .rules-list {
@@ -379,6 +354,7 @@
 @media (min-width: 1440px) {
   .club-rules-section {
     padding: 60px 100px 80px;
+    border-bottom-width: 4px;
   }
 
   .club-rules-header {
@@ -386,8 +362,6 @@
   }
 
   .club-rules-line {
-    width: 181px;
-    height: 4px;
     margin-top: 20px;
   }
 
@@ -456,7 +430,7 @@
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    border-bottom: 1px solid var(--color-line);
+    border-bottom: 4px solid var(--color-line);
   }
 
   .booking-divider {

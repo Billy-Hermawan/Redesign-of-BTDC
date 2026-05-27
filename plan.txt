@@ -1,13 +1,7 @@
-1. Create clear folder structure
-2. Build global header/footer first
-3. Build mobile home page
-4. Make home page responsive for desktop
-5. Build one course detail page
-6. Duplicate/adapt course detail pages
-7. Build booking page
-8. Build checkout page
-9. Build confirmation page
-10. Build Doggo AI page
-11. Add JavaScript interactions
-12. Test at 390 x 844 and 1368 x 912
-13. Clean up GitHub commits
+-> Finish the Checkout and Confirmation pages to complete the full booking journey.
+-> Build the DoggoAI interface to help users choose suitable courses based on their
+dog’s needs.
+-> Run a cognitive walkthrough with a friend to test the full booking flow and identify
+anything unclear.
+
+ TODO: Commit more consistently to GitHub so my development progress is better documented. <3
