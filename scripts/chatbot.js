@@ -1,7 +1,7 @@
 /* Doggo AI — floating chat widget */
 
 (function () {
-  const OPENAI_API_KEY = 'PASTE_YOUR_KEY_HERE';
+  const OPENAI_API_KEY = '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';
 
   const SYSTEM_PROMPT = `
 You are Buddy, the friendly AI assistant for Brisbane Dog Training Club (BDTC).
