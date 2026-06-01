@@ -114,7 +114,7 @@
   cursor: pointer;
   padding: 4px 6px;
   flex-shrink: 0;
-  transition: color 0.2s;
+  transition: color 0.2s, transform 0.15s ease, filter 0.15s ease;
 }
 
 .checkout-item-remove:hover {
@@ -179,7 +179,7 @@
   color: var(--color-text-dark);
   cursor: pointer;
   white-space: nowrap;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, transform 0.15s ease, filter 0.15s ease;
 }
 
 .checkout-discount-btn:hover {
@@ -380,11 +380,14 @@
   border-radius: 8px;
   cursor: pointer;
   margin-top: 8px;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.15s ease, filter 0.15s ease;
 }
 
 .checkout-pay-btn:hover {
-  opacity: 0.88;
+  background-color: #4a7045;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(49, 74, 46, 0.3);
 }
 
 /* ── Desktop overrides — 1440px ──────────────────── */

@@ -184,6 +184,13 @@
   background-color: var(--color-primary);
   color: var(--color-surface);
   text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-button:hover {
+  background-color: #4a7045;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(49, 74, 46, 0.3);
 }
 
 /* =========================

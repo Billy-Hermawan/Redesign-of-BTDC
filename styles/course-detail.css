@@ -226,6 +226,12 @@
   border-radius: 40px;
   text-decoration: none;
   overflow: hidden;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #4a7045;
+  transform: translateY(-3px);
 }
 
 .cta-button span {

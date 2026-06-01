@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease, filter 0.15s ease;
 }
 
 .add-to-cart-btn span {
@@ -38,6 +38,12 @@
 .add-to-cart-btn.active {
   background-color: var(--color-primary);
   cursor: pointer;
+}
+
+.add-to-cart-btn.active:hover {
+  background-color: #4a7045;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(49, 74, 46, 0.3);
 }
 
 .add-to-cart-btn.active span {
@@ -84,6 +90,13 @@
 
 .time-slot.available {
   cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.time-slot.available:hover {
+  background-color: #e8f0e7;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .time-slot.selected {
@@ -168,6 +181,12 @@
 .cal-day.available {
   background-color: var(--color-ascent);
   cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.cal-day.available:hover {
+  background-color: #8a9e86;
+  transform: scale(1.12);
 }
 
 .cal-day.selected {
@@ -267,6 +286,12 @@
   border-radius: 20px;
   text-decoration: none;
   white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.location-maps-btn:hover {
+  background-color: #4a7045;
+  transform: translateY(-2px);
 }
 
 .location-img {
