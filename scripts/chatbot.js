@@ -1,18 +1,59 @@
 /* Doggo AI — floating chat widget */
 
 (function () {
+  const OPENAI_API_KEY = 'PASTE_YOUR_KEY_HERE';
+
+  const SYSTEM_PROMPT = `
+You are Buddy, the friendly AI assistant for Brisbane Dog Training Club (BDTC).
+You speak in a warm, casual Australian tone. Keep replies concise (3–6 sentences max).
+Use plain text only — no markdown, no asterisks. Use line breaks for lists.
+
+KEY FACTS — only use these, do not make anything up:
+
+COURSES:
+- Puppy Preschool: $100, for puppies aged 8–12 weeks. Covers socialisation, basic commands, good habits. Requires proof of first vaccination, small treats, closed-in shoes.
+- Family Dog Training 1 (FDT1): $120, for dogs roughly 3 months to 18 months or untrained adults. Covers sit, recall, loose-lead walking, calm greetings.
+- Family Dog Training 2 (FDT2): for dogs that have completed FDT1. Advanced commands, focus, refined behaviour in challenging environments.
+
+COURSE RECOMMENDATION RULES (follow these strictly):
+- Under 8 weeks → too young, recommend Puppy Preschool once they turn 8 weeks
+- 8 weeks to 12 weeks → Puppy Preschool
+- 3 months to 18 months → Family Dog Training 1
+- Over 18 months with no prior training → Family Dog Training 1
+- Over 18 months with prior training / completed FDT1 → Family Dog Training 2
+- Unknown age / rescue dog → Family Dog Training 1 to start
+
+BOOKING PROCESS:
+1. Go to a course page
+2. Click "Choose Date & Time"
+3. Pick an available date on the calendar
+4. Select a time slot
+5. Add to cart, then click the cart icon at the top to checkout
+
+LOCATION: 15 Englefield Rd, Oxley QLD 4075
+HOURS: Monday to Sunday, 8AM – 8PM
+CONTACT: brisbanedogtrainingclub.com | +61 413 223 190 | facebook.com/bdtc1
+
+CLUB RULES:
+- Positive training only — no harsh treatment
+- Clean up after your dog
+- Don't approach other dogs without permission
+- Keep dogs on lead unless instructed
+- Always close the gate behind you
+
+WHAT TO BRING (all classes): small high-value treats, closed-in shoes, flat collar and lead, vaccination proof (puppies), positive attitude.
+
+If the user asks something outside these topics, say you can help with course recommendations, booking, pricing, location, or club rules — and ask what they'd like to know.
+Always end your first message by asking how old the user's dog is if they haven't mentioned it.
+`.trim();
+
+  const conversationHistory = [];
+
   // ── Path helpers ────────────────────────────────────────────────────
-  // Resolve asset path regardless of root vs pages/
   const base = window.location.pathname.includes('/pages/') ? '../' : '';
 
-  // Resolve internal page path (course pages live in /pages/)
   function pg(page) {
     return window.location.pathname.includes('/pages/') ? page : `pages/${page}`;
-  }
-
-  // Reusable "View course" pill link
-  function courseBtn(label, page) {
-    return `<a href="${pg(page)}" class="chat-course-btn">${label} →</a>`;
   }
 
   // ── Inject widget HTML ──────────────────────────────────────────────
@@ -61,19 +102,19 @@
   const input    = document.getElementById('chatbot-input');
   const sendBtn  = document.getElementById('chatbot-send-btn');
 
-  let isOpen = false;
+  let isOpen  = false;
+  let isBusy  = false;
 
   // ── Open / close ────────────────────────────────────────────────────
   function openChat() {
     isOpen = true;
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
-    // Greeting shown once — immediately asks about the dog
     if (messages.children.length === 0) {
       addBotMessage(
-        "G'day! 🐾 I'm Buddy, Brisbane Dog Training Club's assistant!\n\n" +
-        "I can recommend the perfect course for your dog, or walk you through the booking process.\n\n" +
-        "To get started — <strong>how old is your dog?</strong> (e.g. \"10 weeks\", \"6 months\", \"2 years\")"
+        "G'day! 🐾 I'm Buddy, Brisbane Dog Training Club's AI assistant!\n\n" +
+        "I can recommend the perfect course for your dog or walk you through the booking process.\n\n" +
+        "To get started — how old is your dog? (e.g. \"10 weeks\", \"6 months\", \"2 years\")"
       );
     }
     setTimeout(() => input.focus(), 260);
@@ -93,21 +134,61 @@
   });
 
   // ── Send ────────────────────────────────────────────────────────────
-  function sendMessage() {
+  async function sendMessage() {
     const text = input.value.trim();
-    if (!text) return;
+    if (!text || isBusy) return;
+    isBusy = true;
+    sendBtn.disabled = true;
+
     addUserMessage(text);
     input.value = '';
     showTyping();
-    const delay = 650 + Math.random() * 350;
-    setTimeout(() => {
+
+    try {
+      const reply = await getAIResponse(text);
       removeTyping();
-      addBotMessage(getResponse(text));
-    }, delay);
+      addBotMessage(reply);
+    } catch (err) {
+      removeTyping();
+      addBotMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment! 🐾");
+    }
+
+    isBusy = false;
+    sendBtn.disabled = false;
+    input.focus();
   }
 
   sendBtn.addEventListener('click', sendMessage);
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+  // ── OpenAI API call ─────────────────────────────────────────────────
+  async function getAIResponse(userText) {
+    conversationHistory.push({ role: 'user', content: userText });
+
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          ...conversationHistory
+        ],
+        max_tokens: 350,
+        temperature: 0.7
+      })
+    });
+
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+
+    const data = await res.json();
+    const reply = data.choices[0].message.content.trim();
+    conversationHistory.push({ role: 'assistant', content: reply });
+    return reply;
+  }
 
   // ── Message helpers ─────────────────────────────────────────────────
   function addUserMessage(text) {
@@ -118,10 +199,10 @@
     scrollBottom();
   }
 
-  function addBotMessage(html) {
+  function addBotMessage(text) {
     const el = document.createElement('div');
     el.className = 'chat-msg bot';
-    el.innerHTML = `<div class="chat-bubble">${html}</div>`;
+    el.innerHTML = `<div class="chat-bubble">${escHtml(text).replace(/\n/g, '<br>')}</div>`;
     messages.appendChild(el);
     scrollBottom();
   }
@@ -148,187 +229,5 @@
 
   function escHtml(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  // ── Age parser — returns age in weeks, or null ──────────────────────
-  function parseAgeWeeks(t) {
-    const wm = t.match(/(\d+)\s*week/);
-    if (wm) return parseInt(wm[1]);
-
-    const mm = t.match(/(\d+)\s*month/);
-    if (mm) return Math.round(parseInt(mm[1]) * 4.33);
-
-    const ym = t.match(/(\d+)\s*(year|yr)/);
-    if (ym) return parseInt(ym[1]) * 52;
-
-    // Bare number — treat as weeks if ≤ 52, years if > 52 (unlikely bare input)
-    const nm = t.match(/^(\d+)$/);
-    if (nm) return parseInt(nm[1]);
-
-    return null;
-  }
-
-  // ── Rule-based responses ────────────────────────────────────────────
-  function getResponse(userText) {
-    const t = userText.toLowerCase();
-
-    // ── Greetings ──
-    if (/\b(hi|hello|hey|howdy|g'?day|yo)\b/.test(t)) {
-      return "Hey there! 🐾 How old is your dog? I'll point you straight to the right course!";
-    }
-
-    // ── Farewell ──
-    if (/\b(bye|goodbye|see ya|seeya|later|cheers)\b/.test(t)) {
-      return "See you at training! 🐾 Feel free to pop back any time.";
-    }
-
-    // ── Thanks ──
-    if (/\b(thank|thanks|ta|appreciate)\b/.test(t)) {
-      return "You're welcome! Anything else I can help with? 🐾";
-    }
-
-    // ── Age / stage detection (core recommendation flow) ──────────────
-    const ageWeeks = parseAgeWeeks(t);
-
-    if (ageWeeks !== null) {
-      if (ageWeeks < 8) {
-        return (
-          "Your pup is still very young! 🐾 We recommend waiting until they hit <strong>8 weeks</strong>.\n\n" +
-          "Once they're ready, our Puppy Preschool will be perfect for them.\n\n" +
-          courseBtn("View Puppy Preschool", "course-detail.html")
-        );
-      }
-      if (ageWeeks <= 16) {
-        return (
-          "That's the perfect age for our <strong>Puppy Preschool</strong>! 🐶\n\n" +
-          "Designed for puppies 8–12 weeks, it covers socialisation, basic commands, and building great habits from day one.\n\n" +
-          courseBtn("View Puppy Preschool", "course-detail.html")
-        );
-      }
-      if (ageWeeks <= 78) { // up to ~18 months
-        return (
-          "At that age your dog is ready to build solid foundations with our <strong>Family Dog Training 1</strong>! 🐕\n\n" +
-          "Small, structured classes using positive, reward-based methods. Great starting point for any dog.\n\n" +
-          courseBtn("View Family Dog Training 1", "family-dog-training-1.html")
-        );
-      }
-      // 18+ months
-      return (
-        "With an older dog, <strong>Family Dog Training 1</strong> is a great starting point — or if they've had prior training, <strong>Family Dog Training 2</strong> may suit them better.\n\n" +
-        "Have they had any formal training before?"
-      );
-    }
-
-    // ── "I don't know" / rescue / not sure ──
-    if (/\b(don'?t know|not sure|unsure|rescue|unknown|adult)\b/.test(t)) {
-      return (
-        "No worries! 🐾 For adult dogs or rescues where the history is unclear, we'd normally recommend starting with <strong>Family Dog Training 1</strong> to build a solid foundation.\n\n" +
-        courseBtn("View Family Dog Training 1", "family-dog-training-1.html")
-      );
-    }
-
-    // ── "Already done FDT1" / has prior training ──
-    if (/\b(done|completed|finished|already|level 1|fdt1)\b/.test(t) && /\b(training|course|class|level)\b/.test(t)) {
-      return (
-        "Awesome — sounds like they're ready to level up with <strong>Family Dog Training 2</strong>! 🦮\n\n" +
-        "It builds on FDT1 with advanced commands, better focus, and refined behaviour in challenging environments.\n\n" +
-        courseBtn("Book Family Dog Training 2", "booking.html")
-      );
-    }
-
-    // ── Booking ──
-    if (/\b(book|booking|reserve|schedule|session|enrol|enroll)\b/.test(t)) {
-      return (
-        "To book a session:\n" +
-        "1. Visit a course page\n" +
-        "2. Tap <strong>Choose Date &amp; Time</strong>\n" +
-        "3. Pick a date on the calendar\n" +
-        "4. Select a time slot\n" +
-        "5. Add to cart and checkout!\n\n" +
-        "Not sure which course? Just tell me how old your dog is 🐾"
-      );
-    }
-
-    // ── Cart / checkout ──
-    if (/\b(cart|checkout|pay|payment|purchase|buy)\b/.test(t)) {
-      return "Once you've picked a date and time, tap <strong>Add to Cart</strong>. Then click the 🛒 icon at the top to review and complete your checkout!";
-    }
-
-    // ── Courses — general list ──
-    if (/\b(course|class|program|what.*offer|all course)\b/.test(t)) {
-      return (
-        "We offer three courses:\n\n" +
-        `🐶 <a href="${pg('course-detail.html')}" class="chat-link">Puppy Preschool</a> — $100 · puppies 8–12 weeks\n` +
-        `🐕 <a href="${pg('family-dog-training-1.html')}" class="chat-link">Family Dog Training 1</a> — $120 · everyday manners\n` +
-        "🦮 Family Dog Training 2 — advanced skills\n\n" +
-        "Tell me your dog's age and I'll recommend the right one!"
-      );
-    }
-
-    // ── Puppy Preschool ──
-    if (/\b(puppy|preschool)\b/.test(t)) {
-      return (
-        "🐶 <strong>Puppy Preschool</strong> is perfect for puppies aged 8–12 weeks. We focus on socialisation, basic commands, and building great habits from day one.\n\n" +
-        "You'll need:\n✓ Proof of first vaccination\n✓ Lots of small treats\n✓ Closed-in shoes\n✓ Positive attitude!\n\n" +
-        courseBtn("View Puppy Preschool", "course-detail.html")
-      );
-    }
-
-    // ── Family Dog Training 1 ──
-    if (/family.*1|training.*1|fdt\s*1|level 1|beginner/.test(t)) {
-      return (
-        "🐕 <strong>Family Dog Training 1</strong> builds strong foundations using reward-based training. Small, structured classes for real-world situations.\n\n" +
-        "Covers: sit, recall, loose-lead walking, calm greetings, and more!\n\n" +
-        courseBtn("View Family Dog Training 1", "family-dog-training-1.html")
-      );
-    }
-
-    // ── Family Dog Training 2 ──
-    if (/family.*2|training.*2|fdt\s*2|level 2|advanced|intermediate/.test(t)) {
-      return (
-        "🦮 <strong>Family Dog Training 2</strong> takes skills to the next level — advanced commands, better focus, and refined behaviour in challenging environments.\n\n" +
-        courseBtn("Book a Session", "booking.html")
-      );
-    }
-
-    // ── Price ──
-    if (/\b(price|cost|how much|fee|charge|\$|dollar)\b/.test(t)) {
-      return "Our sessions are <strong>$100</strong> for Puppy Preschool and <strong>$120</strong> for Family Dog Training — each covering a full session with an expert positive-reinforcement trainer!";
-    }
-
-    // ── Location ──
-    if (/\b(where|location|address|find us|map|oxley|direction|suburb)\b/.test(t)) {
-      return "📍 We're at:\n<strong>15 Englefield Rd, Oxley QLD 4075</strong>\n\nThere's a Google Maps link on our booking page!";
-    }
-
-    // ── Hours ──
-    if (/\b(hour|open|when|time|day|monday|sunday|weekend|8am|8pm)\b/.test(t)) {
-      return "🕐 We're open <strong>Monday to Sunday, 8AM – 8PM</strong>. Plenty of slots to find one that suits you!";
-    }
-
-    // ── Club rules ──
-    if (/\b(rule|regulation|policy|allowed|behaviour|aggressive)\b/.test(t)) {
-      return "Our club rules:\n\n✓ Positive training only — no harsh treatment\n✓ Clean up after your dog\n✓ Don't approach other dogs without permission\n✓ Keep dogs on lead unless instructed\n✓ Always close the gate behind you";
-    }
-
-    // ── Contact ──
-    if (/\b(contact|email|phone|call|reach|facebook|social)\b/.test(t)) {
-      return "You can reach us at:\n📧 brisbanedogtrainingclub.com\n📞 +61 413 223 190\n📘 <strong>facebook.com/bdtc1</strong>";
-    }
-
-    // ── What to bring ──
-    if (/\b(bring|need|require|requirement|prepare|what to)\b/.test(t)) {
-      return "For any class, bring:\n✓ Lots of small, high-value treats\n✓ Closed-in shoes\n✓ Flat collar and lead\n✓ Proof of vaccination (puppies)\n✓ A positive attitude! 🐾";
-    }
-
-    // ── Fallback ──
-    return (
-      "I'm not sure about that one! I can help with:\n\n" +
-      "🐶 <strong>Course recommendations</strong> — just tell me your dog's age\n" +
-      "📅 <strong>How to book</strong> a session\n" +
-      "💰 <strong>Pricing</strong> and what to bring\n" +
-      "📍 <strong>Location</strong>\n\n" +
-      "What would you like to know?"
-    );
   }
 })();

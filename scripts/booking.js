@@ -36,8 +36,8 @@ if (backLink && course === 'family-dog-training-1') {
     };
 
     let current = new Date(2026, 9, 1);
-    let selected = null;      // { year, month, day }
-    let selectedTime = null;  // string e.g. '2:00 PM'
+    let selected = null;
+    let selectedTime = null;  
 
     const grid      = document.getElementById('cal-grid');
     const label     = document.getElementById('cal-month-year');
