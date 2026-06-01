@@ -1,7 +1,10 @@
 /* Doggo AI — floating chat widget */
 
 (function () {
-  const OPENAI_API_KEY = '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'
+  // NOTE: API key intentionally left as placeholder.
+  // Exposing a real key in a public GitHub repo causes OpenAI to automatically
+  // revoke it. A proper fix requires a backend proxy (e.g. Netlify Functions)
+  const OPENAI_API_KEY = 'PASTE_YOUR_KEY_HERE';
   const SYSTEM_PROMPT = `
 You are Buddy, the friendly AI assistant for Brisbane Dog Training Club (BDTC).
 You speak in a warm, casual Australian tone. Keep replies concise (3–6 sentences max).
