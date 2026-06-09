@@ -22,6 +22,20 @@ body {
   scroll-behavior: smooth;
 }
 
+body {
+  animation: pageFadeIn 0.15s ease;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body.page-leaving {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
 /* =========================
    GLOBAL FONTS & TYPOGRAPHY
    Mobile base: 390px
@@ -253,7 +267,7 @@ input[type="button"]:active,
   height: 2px;
   background-color: var(--color-text-dark);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 

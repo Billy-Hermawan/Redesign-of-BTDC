@@ -1,3 +1,14 @@
+// --- Page Transitions ---
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (!link) return;
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || link.target === '_blank') return;
+  e.preventDefault();
+  document.body.classList.add('page-leaving');
+  setTimeout(() => { window.location.href = href; }, 150);
+});
+
 // --- Cart Badge ---
 (function () {
     const badge = document.getElementById('cart-badge');

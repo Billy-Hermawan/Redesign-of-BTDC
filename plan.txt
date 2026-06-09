@@ -1,7 +1,0 @@
--> Finish the Checkout and Confirmation pages to complete the full booking journey.
--> Build the DoggoAI interface to help users choose suitable courses based on their
-dog’s needs.
--> Run a cognitive walkthrough with a friend to test the full booking flow and identify
-anything unclear.
-
- TODO: Commit more consistently to GitHub so my development progress is better documented. <3
