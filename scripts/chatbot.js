@@ -107,6 +107,28 @@ Always end your first message by asking how old the user's dog is if they haven'
   let isOpen  = false;
   let isBusy  = false;
 
+  // ── First-visit tooltip ─────────────────────────────────────────────
+  if (!localStorage.getItem('chatbot_seen')) {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'chatbot-tooltip';
+    tooltip.innerHTML = `
+      <strong style="display:block;margin-bottom:6px;color:var(--color-primary)">👋 Not sure where to start?</strong>
+      Ask Buddy! Our AI assistant can recommend the right course for your dog and walk you through booking. 🐾
+      <button class="chatbot-tooltip-close" aria-label="Dismiss">✕</button>
+    `;
+    document.body.appendChild(tooltip);
+
+    const dismissTooltip = () => {
+      tooltip.classList.remove('visible');
+      localStorage.setItem('chatbot_seen', '1');
+      setTimeout(() => tooltip.remove(), 300);
+    };
+
+    setTimeout(() => tooltip.classList.add('visible'), 1500);
+    tooltip.querySelector('.chatbot-tooltip-close').addEventListener('click', dismissTooltip);
+    fab.addEventListener('click', dismissTooltip, { once: true });
+  }
+
   // ── Open / close ────────────────────────────────────────────────────
   function openChat() {
     isOpen = true;

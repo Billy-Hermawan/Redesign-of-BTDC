@@ -297,6 +297,85 @@
   fill: var(--color-surface);
 }
 
+/* ── First-visit tooltip ─────────────────────────── */
+
+.chatbot-tooltip {
+  position: fixed;
+  bottom: 108px;
+  right: 12px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 16px 40px 16px 16px;
+  width: 230px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-dark);
+  line-height: 1.5;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  z-index: 9998;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.chatbot-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.chatbot-tooltip-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-ascent);
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 0.15s ease;
+}
+
+.chatbot-tooltip-close:hover {
+  color: var(--color-text-dark);
+  transform: none;
+}
+
+.chatbot-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 26px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--color-surface);
+  filter: drop-shadow(0 2px 0 var(--color-line));
+}
+
+@media (min-width: 1440px) {
+  .chatbot-tooltip {
+    bottom: 136px;
+    right: 24px;
+    width: 280px;
+    font-size: 15px;
+    padding: 20px 48px 20px 20px;
+    border-radius: 20px;
+  }
+
+  .chatbot-tooltip-close {
+    font-size: 20px;
+    top: 14px;
+    right: 14px;
+  }
+}
+
 /* ── Desktop overrides — 1440px ──────────────────── */
 
 @media (min-width: 1440px) {
