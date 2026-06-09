@@ -154,7 +154,7 @@ if (backLink && course === 'family-dog-training-1') {
             time: selectedTime,
         });
         localStorage.setItem('cart', JSON.stringify(cart));
-        window.location.href = '../index.html';
+        window.location.href = '../pages/checkout.html';
     });
 
     render();
